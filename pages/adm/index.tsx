@@ -1,7 +1,8 @@
+/* eslint-disable import/order */
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Button from "components/Button";
 import Input from "components/Input";
-import { UserCredential, getAuth, signInWithCustomToken, signInWithEmailAndPassword } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Cookie from "js-cookie";
@@ -24,7 +25,6 @@ function Admin({ Component, pageProps } : AppProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const router = useRouter();
 
     useEffect(() => {
         const AuthCookie = Cookie.get('auth');
@@ -59,11 +59,6 @@ function Admin({ Component, pageProps } : AppProps) {
         }else{
             alert('You Not The Admin')
         }
-    }
-
-    function Logout() {
-        Cookie.remove('auth');
-        setIsLoggedIn(false);
     }
 
     return(
