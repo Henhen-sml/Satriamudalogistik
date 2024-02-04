@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { WhatsappIcon, FacebookMessengerIcon } from 'react-share';
+import { WhatsappIcon, FacebookMessengerIcon, EmailIcon } from 'react-share';
 import styled from 'styled-components';
 import Container from 'components/Container';
 import { media } from 'utils/media';
@@ -42,11 +42,11 @@ export default function Footer() {
         <BottomBar>
           <ShareBar>
             <NextLink href="https://www.instagram.com/satriamudalogistik" passHref>
-             
                 <FacebookMessengerIcon size={50} round={true} />
-              
             </NextLink>
-
+            <NextLink href="mailto:cs@satriamudalogistik.com" passHref>
+                <EmailIcon size={50} round={true} />
+            </NextLink>
             <NextLink href="https://wa.me/628113333823" passHref>
                 <WhatsappIcon size={50} round={true} />
             </NextLink>

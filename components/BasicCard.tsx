@@ -3,16 +3,16 @@ import styled from 'styled-components';
 
 interface BasicCardProps {
   title: string;
-  description: string;
-  imageUrl: string;
+  desc: string;
+  url: string;
 }
 
-export default function BasicCard({ title, description, imageUrl }: BasicCardProps) {
+export default function BasicCard({ title, desc, url }: BasicCardProps) {
   return (
     <Card>
-      <NextImage src={imageUrl} width={128} height={128} alt={title} />
+      <NextImage src={url} width={256} height={256} alt={title} />
       <Title>{title}</Title>
-      <Description>{description}</Description>
+      <Description>{desc}</Description>
     </Card>
   );
 }

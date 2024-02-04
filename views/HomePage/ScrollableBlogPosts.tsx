@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { A11y } from 'swiper';
+import { EffectCards } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
-import OverTitle from 'components/OverTitle';
 import { useResizeObserver } from 'hooks/useResizeObserver';
 import { NewsArticle } from 'types';
 import { media } from 'utils/media';
@@ -16,7 +15,7 @@ interface ScrollableBlogPostsProps {
 
 export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps) {
   const [hasMounted, setHasMounted] = useState(false);
-  const { ref, width = 1 } = useResizeObserver<HTMLDivElement>();
+  const { ref, width = 2 } = useResizeObserver<HTMLDivElement>();
 
   const oneItemWidth = 350;
   const noOfItems = width / oneItemWidth;
@@ -28,7 +27,7 @@ export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps)
   return (
     <SwiperContainer ref={ref}>
         {hasMounted && (
-          <Swiper modules={[A11y]} slidesPerView={noOfItems} spaceBetween={25} loop>
+          <Swiper modules={[EffectCards]} slidesPerView={noOfItems} spaceBetween={25}>
             {posts.map((singlePost, i) => (
               <SwiperSlide key={i}>
                 <BannerCard

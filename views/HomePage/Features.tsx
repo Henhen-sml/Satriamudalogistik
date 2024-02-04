@@ -1,45 +1,38 @@
-import React from 'react';
+import { get, ref, child } from 'firebase/database';
+import {database} from '../../firebase';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AutofitGrid from 'components/AutofitGrid';
 import BasicCard from 'components/BasicCard';
 import Container from 'components/Container';
 import { media } from 'utils/media';
 
-const FEATURES = [
-  {
-    imageUrl: '/grid-icons/asset-5.svg',
-    title: 'Latest Security Patch.',
-    description:
-      'Implement strict authorization and authentication to ensure that only legitimate users have access to specific areas of the website, especially if there is sensitive data to protect.',
-  },
-  {
-    imageUrl: '/grid-icons/asset-2.svg',
-    title: 'Ad-Free Experience.',
-    description:
-      ' there are no embedded or disruptive ads on the website to maintain a professional and focused user experience.',
-  },
-  {
-    imageUrl: '/grid-icons/asset-3.svg',
-    title: 'News Feature.',
-    description:
-      'Organize news into various categories so that users can easily find the information they are looking for.',
-  },
-  {
-    imageUrl: '/grid-icons/asset-4.svg',
-    title: 'Blog Feature.',
-    description:
-      'Offer a blog with various types of content such as articles, guides, tutorials, and more that are relevant to your websites topic.',
-  },
-];
+interface PostData {
+  desc : string;
+  title: string;
+  url : string;
+}
 
 export default function Features() {
+  const [features, setFeatures] = useState<PostData[]>([]);
+
+  useEffect(() => {
+    const DB = ref(database);
+    get(child(DB, 'MainSection/Features')).then(async(data) => {
+        const Post: PostData[] = data.val() || {};
+        const array = Object.values(Post);
+        setFeatures(array);
+    })
+  },)
+
+  console.log(features)
   return (
     
     <Container>
       <CustomAutofitGrid>
-        {FEATURES.map((singleFeature, idx) => (
-        <AnimatedElement key={singleFeature.title}>
-          <BasicCard  {...singleFeature} />
+        {features.map((a) => (
+        <AnimatedElement key={a.title}>
+          <BasicCard  {...a} />
         </AnimatedElement>
           ))}
       </CustomAutofitGrid>

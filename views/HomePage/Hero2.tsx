@@ -23,14 +23,6 @@ export default function Hero2() {
     });
   }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 5,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <SliderContainer>
             <ScrollableBlogPosts posts={banner} />

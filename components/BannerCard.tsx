@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
+import Modal from 'react-modal';
 import styled from 'styled-components';
 import { media } from 'utils/media';
 
@@ -8,29 +10,29 @@ export interface BannerProps {
 }
 
 export default function BannerCard({ url, title }: BannerProps) {
+
   return (
     <ArticleCardWrapper className="article-card-wrapper">
-          <ImageContainer>
-            <ImageHolder src={url} alt={title} />
-          </ImageContainer>
-      </ArticleCardWrapper>
+      <ImageContainer>
+        <ImageHolder src={url} alt={title} />
+      </ImageContainer>
+    </ArticleCardWrapper>
   );
 }
 
 const ImageHolder = styled.img`
   position: flex;
   display: block;
-  max-height: 25rem;
-  max-width: 25rem;
-  margin-left: auto;
-  margin-right: auto;
+  max-height: 30rem;
+  max-width: 30rem;
+  margin: auto;
   border-radius: 8px;
-`
+`;
 
 const ImageContainer = styled.div`
-  position: flex;
+  position: relative;
   height: 100%;
-  
+
   &:before {
     display: block;
     content: '';
@@ -44,6 +46,7 @@ const ImageContainer = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 1;
   }
 
   ${media('<=desktop')} {
@@ -61,4 +64,6 @@ const ArticleCardWrapper = styled.div`
   border-radius: 0.6rem;
   background: rgb(var(--cardBackground));
   color: rgb(var(--text));
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Properti box-shadow ditambahkan di sini */
 `;

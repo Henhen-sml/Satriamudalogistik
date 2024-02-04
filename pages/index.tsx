@@ -29,8 +29,6 @@ export default function Homepage() {
     })
   },[isAnimated])
   
-  
-  console.log(AboutData);
   return (
     <>
       <Head>

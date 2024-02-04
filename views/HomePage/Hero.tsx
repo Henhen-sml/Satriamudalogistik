@@ -36,8 +36,8 @@ export default function Hero() {
           <Logo />
         </LogoWrapper>
         <TextContent>
-          <Text>FREIGHT FORWARDER</Text>
-          <Text>Logistic & Transport</Text>
+          <Text>WE SERVE BETTER</Text>
+          <Text>IN LOGISTIC</Text>
         </TextContent>
         <InputCard>
           <HeaderText>
