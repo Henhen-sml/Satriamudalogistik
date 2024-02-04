@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { FacebookIcon, LinkedinIcon, TwitterIcon } from 'react-share';
+import { WhatsappIcon, FacebookMessengerIcon } from 'react-share';
 import styled from 'styled-components';
 import Container from 'components/Container';
 import { media } from 'utils/media';
@@ -11,23 +11,21 @@ type FooterItems = SingleFooterList[];
 
 const footerItems: FooterItems = [
   {
-    title: 'Feature',
+    title: 'Our Service',
     items: [
-      { title: 'Features', href: '/features' },
-      { title: 'Berita', href: '/berita' },
-      { title: 'Tools/Apps', href: '/tools' },
-      { title: 'Games', href: '/games' },
-      { title: '????', href: '/hidden' },
+      { title: 'Sea Freight FCL/LCL', href: '/produk-dan-layanan' },
+      { title: 'Trucking And Distribution', href: '/produk-dan-layanan' },
+      { title: 'Project Cargo', href: '/produk-dan-layanan' },
+      { title: 'Heavy Equipment', href: '/produk-dan-layanan' },
     ],
   },
   {
     title: 'Knowledge',
     items: [
-      { title: 'Blog', href: '/blog' },
-      { title: 'Contact', href: '/contact' },
-      { title: 'FAQ', href: '/faq' },
-      { title: 'Privacy Policy', href: '/privacy-policy' },
-      { title: 'Cookies Policy', href: '/cookies-policy' },
+      { title: 'Produk dan layanan', href: '/produk-dan-layanan' },
+      { title: 'Tentang perusahaan', href: '/profile-perusahaan' },
+      { title: 'Berita', href: '/berita' },
+      { title: 'Hubungi Kami', href: '/contact' },
     ],
   }
 ];
@@ -43,23 +41,17 @@ export default function Footer() {
         </ListContainer>
         <BottomBar>
           <ShareBar>
-            <NextLink href="https://www.twitter.com/my-saas-startup" passHref>
+            <NextLink href="https://www.instagram.com/satriamudalogistik" passHref>
              
-                <TwitterIcon size={50} round={true} />
+                <FacebookMessengerIcon size={50} round={true} />
               
             </NextLink>
 
-            <NextLink href="https://www.facebook.com/my-saas-startup" passHref>
-             
-                <FacebookIcon size={50} round={true} />
-             
-            </NextLink>
-
-            <NextLink href="https://www.linkedin.com/my-saas-startup" passHref>
-                <LinkedinIcon size={50} round={true} />
+            <NextLink href="https://wa.me/628113333823" passHref>
+                <WhatsappIcon size={50} round={true} />
             </NextLink>
           </ShareBar>
-          <Copyright>&copy; Copyright 2021 My Saas Startup</Copyright>
+          <Copyright>&copy; Copyright 2022 SATRIA MUDA LOGISTICS</Copyright>
         </BottomBar>
       </Container>
     </FooterWrapper>
@@ -90,14 +82,14 @@ function ListItem({ title, href }: SingleFooterListItem) {
 const FooterWrapper = styled.div`
   padding-top: 10rem;
   padding-bottom: 4rem;
-  background: rgb(var(--secondary));
-  color: rgb(var(--textSecondary));
+  color: rgb(var(--text));
 `;
 
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  color: rgb(var(--text));
   justify-content: space-between;
 `;
 
@@ -133,7 +125,7 @@ const ListItemWrapper = styled.p`
 
   a {
     text-decoration: none;
-    color: rgba(var(--textSecondary), 0.75);
+    color: rgba(var(--text), 0.75);
   }
 `;
 

@@ -37,7 +37,7 @@ export default function Homepage() {
         <title>{EnvVars.SITE_NAME}</title>
         <meta
           name="description"
-          content="Satria Muda Logistics "
+          content="Satria Muda Logistics"
         />
       </Head>
       <HomepageWrapper>
@@ -45,9 +45,8 @@ export default function Homepage() {
             <HeroSection>
                 <Hero2 />
                 {AboutData.map((a: any, i) => {
-                  console.log(a)
                   return(
-                    <BasicSection key={i} title={a.title} overTitle={a.overTitle} reversed>
+                    <BasicSection key={i} title={a.title} reversed>
                     <p>
                       {a.p1}
                     </p>

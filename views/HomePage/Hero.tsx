@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import Logo from 'components/Logo';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { el } from 'date-fns/locale';
 
 export default function Hero() {
-
+  const [noResi, setNoResi] = useState("")
   const [BgVid, setBgVid] = useState("");
 
   useEffect(() => {
@@ -21,8 +22,11 @@ export default function Hero() {
 
   const router = useRouter();
   const handleSearch = () => {
-    router.push(`/tracking?r=${12345678910}`);
-    console.log('Melakukan pencarian...');
+    if(noResi){
+      router.push(`/tracking?r=${noResi}`);
+    }else{
+      alert('Nomor Resi Tidak Boleh Kosong')
+    }
   };
 
   return (
@@ -44,7 +48,7 @@ export default function Hero() {
             <Image src='https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/mainBanner%2Fico-lacak.svg?alt=media&token=94384ada-5938-40e0-a76a-346520ccca6b' alt="Search" />
           </ImageWrapper>
             <InputResi>
-              <Input placeholder='Nomor Resi' />
+              <Input placeholder='Nomor Resi' onChange={(e) => setNoResi(e.target.value)}/>
             </InputResi>
             <SearchButton onClick={handleSearch}>
               CARI

@@ -2,20 +2,17 @@ import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import { media } from 'utils/media';
 import Container from './Container';
-import OverTitle from './OverTitle';
 import RichText from './RichText';
 
 export interface BasicSectionProps {
   title: string;
-  overTitle: string;
   reversed?: boolean;
 }
 
-export default function BasicSection({ title, overTitle, reversed, children }: PropsWithChildren<BasicSectionProps>) {
+export default function BasicSection({ title, reversed, children }: PropsWithChildren<BasicSectionProps>) {
   return (
     <BasicSectionWrapper reversed={reversed}>
       <ContentContainer>
-        <CustomOverTitle>{overTitle}</CustomOverTitle>
         <Title>{title}</Title>
         <RichText>{children}</RichText>
       </ContentContainer>
@@ -34,10 +31,6 @@ const Title = styled.h1`
     font-size: 4.6rem;
     margin-bottom: 2rem;
   }
-`;
-
-const CustomOverTitle = styled(OverTitle)`
-  margin-bottom: 2rem;
 `;
 
 const ImageContainer = styled.div`

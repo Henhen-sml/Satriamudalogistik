@@ -1,47 +1,48 @@
+import { get, ref, child } from 'firebase/database';
+import { database } from '../../firebase';
 import NextImage from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Autoplay } from 'swiper';
+import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
 import { media } from 'utils/media';
 
-const PARTNER_LOGOS = [
-  'google-logo-1.svg',
-  'matane-production-logo-2.svg',
-  'next-js-logo-3.svg',
-
-];
-
+interface Partners {
+  title: string;
+  url: string;
+}
 export default function Partners() {
+
+  const [Partner, setPartner] = useState<Partners[]>([]);
+
+  useEffect(() => {
+    const DB = ref(database);
+    get(child(DB,"MainSection/Partner")).then(async(data) => {
+      const dataP = data.val() || {};
+      const Array:Partners[] = Object.values(dataP);
+      setPartner(Array);
+    })
+  },[])
+
   return (
     <PartnersWrapper>
       <Title>Kerja Sama</Title>
       <Swiper
-        modules={[Autoplay]}
-        slidesPerView={6}
+        modules={[A11y]}
+        slidesPerView={2}
         spaceBetween={30}
         loop={true}
-        autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false, waitForTransition: false, stopOnLastSlide: false }}
-        speed={2500}
-        breakpoints={{
-          320: { slidesPerView: 2 },
-          768: { slidesPerView: 4 },
-        }}
         className="swiper-wrapper"
       >
-        {PARTNER_LOGOS.map((logo) => (
-          <SwiperSlide key={logo}>
-            <NextImage src={'/partners/' + logo} alt={normalizePartnerLogoName(logo)} width={128} height={128} />
+        {Partner.map((a: any, i) => (
+          <SwiperSlide key={i}>
+            <NextImage src={a.url} alt={a.title} width={128} height={128} />
           </SwiperSlide>
         ))}
       </Swiper>
     </PartnersWrapper>
   );
-}
-
-function normalizePartnerLogoName(logo: string) {
-  return logo.replace('.svg', '');
 }
 
 const Title = styled.h3`
@@ -63,6 +64,7 @@ const PartnersWrapper = styled(Container)`
     will-change: transform;
     transition-timing-function: linear;
     margin-top: 0.5rem;
+    padding-bottom: 1rem;
     user-select: none;
   }
 
