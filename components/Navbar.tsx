@@ -1,10 +1,9 @@
-import { signOut } from 'firebase/auth';
 import dynamic from 'next/dynamic';
+import NextImage from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { useLogin } from 'contexts/LoginContext';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { ScrollPositionEffectProps, useScrollPosition } from 'hooks/useScrollPosition';
 import { NavItems, SingleNavItem } from 'types';
@@ -13,8 +12,8 @@ import Button from './Button';
 import Container from './Container';
 import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
+import logo from '../public/Logo-SML.png'
 import Logo from './Logo';
-import { auth } from '../firebase';
 
 const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false });
 
@@ -29,9 +28,9 @@ export default function Navbar({ items }: NavbarProps) {
 
   let lastScrollY = useRef(0);
   const lastRoute = useRef('');
-  const stepSize = useRef(50);
+  const stepSize = useRef(0);
 
-  useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 50);
+  useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 0);
 
   function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
     const routerPath = router.asPath;
@@ -64,21 +63,14 @@ export default function Navbar({ items }: NavbarProps) {
     lastScrollY.current = currentScrollY;
   }
 
-  const isNavbarHidden = scrollingDirection === 'down';
+  const isNavbarHidden = scrollingDirection === 'none';
   const isTransparent = scrollingDirection === 'none';
-
-  const {isLogin, setLogin} = useLogin();
-
-  const handleLogout = () => {
-    signOut(auth);
-    setLogin(false);
-  }
 
   return (
     <NavbarContainer hidden={isNavbarHidden} transparent={isTransparent}>
         <NextLink href="/" passHref>
             <LogoWrapper>
-              <Logo />
+               <Logo />
             </LogoWrapper>
         </NextLink>
       <Content>
@@ -86,11 +78,7 @@ export default function Navbar({ items }: NavbarProps) {
           {items.map((singleItem, i) => (
             <NavItem key={i} {...singleItem} />
           ))}
-          {isLogin ? <CustomButton onClick={handleLogout}>Logout</CustomButton> : ""}
         </NavItemList>
-        <ColorSwitcherContainer>
-          <ColorSwitcher />
-        </ColorSwitcherContainer>
         <HamburgerMenuWrapper>
           <HamburgerIcon aria-label="Toggle menu" onClick={toggle} />
         </HamburgerMenuWrapper>
@@ -144,7 +132,7 @@ const LogoWrapper = styled.div`
   justify-content: flex-start;
   padding: 0.5rem;
   text-decoration: none;
-  margin-top: auto;
+  margin-top: -43px;
   color: rgb(var(--logoColor));
 `;
 

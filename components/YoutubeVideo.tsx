@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import playIcon from '../public/play-icon.svg';
-
 interface YoutubeVideoProps {
   title?: string;
   url: string;
@@ -45,9 +43,8 @@ export default function YoutubeVideo(props: YoutubeVideoProps) {
     width: 100%;
   }
   </style>
-  <a style="color: rgb(var(--primary))" href=https://www.youtube.com/embed/${videoHash}?autoplay=1>
+  <a style="color: rgb(var(--primary))" href=https://www.youtube.com/embed/${videoHash}?autoplay=1&loop=1&playlist=${videoHash}>
     <img class="thumbnail" src="https://img.youtube.com/vi/${videoHash}/hqdefault.jpg" alt='${title || ''}'>
-    <img class="play" src="${playIcon}" alt="Play the video">
   </a>`;
   return (
     <VideoContainer>
@@ -58,7 +55,7 @@ export default function YoutubeVideo(props: YoutubeVideoProps) {
         src=""
         srcDoc={srcDoc}
         frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         title={title}
         loading="lazy"
@@ -70,7 +67,7 @@ export default function YoutubeVideo(props: YoutubeVideoProps) {
 function extractVideoHashFromUrl(url: string) {
   const videoHashQueryParamKey = 'v';
   const searchParams = new URL(url).search;
-  return new URLSearchParams(searchParams).getAll(videoHashQueryParamKey);
+  return new URLSearchParams(searchParams).getAll(videoHashQueryParamKey)[0];
 }
 
 export const VideoContainer = styled.div`

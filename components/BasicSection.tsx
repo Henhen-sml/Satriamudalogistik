@@ -14,9 +14,6 @@ export interface BasicSectionProps {
 export default function BasicSection({ title, overTitle, reversed, children }: PropsWithChildren<BasicSectionProps>) {
   return (
     <BasicSectionWrapper reversed={reversed}>
-      {/*<ImageContainer>
-        <NextImage src={imageUrl} alt={title} layout="fill" objectFit="cover" />
-      </ImageContainer>*/}
       <ContentContainer>
         <CustomOverTitle>{overTitle}</CustomOverTitle>
         <Title>{title}</Title>

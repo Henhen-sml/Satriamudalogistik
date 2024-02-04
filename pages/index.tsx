@@ -1,20 +1,19 @@
-import { InferGetStaticPropsType } from 'next';
+import { child, get, ref  } from 'firebase/database';
+import { database } from '../firebase.js';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styled, {keyframes} from 'styled-components';
 import BasicSection from 'components/BasicSection';
 import { EnvVars } from 'env';
-import { getSingleNews } from 'utils/newsFetcher';
 import Features from 'views/HomePage/Features';
-import FeaturesGallery from 'views/HomePage/FeaturesGallery';
 import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
-import ScrollableBlogPosts from 'views/HomePage/ScrollableBlogPosts';
+import Hero2 from 'views/HomePage/Hero2';
 
-export default function Homepage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Homepage() {
   
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
-
+  const [AboutData , setAboutData] = useState<unknown[]>([]);
   
   const HeroSection = styled.div`
     animation: ${isAnimated ? fadeInUp : 'none'} 1s ease-in-out;
@@ -22,48 +21,54 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
 
   useEffect(() => {
     setIsAnimated(true);
+    const DB = ref(database);
+    get(child(DB, 'MainSection/BasicSection')).then(async(data) => {
+      const Basic = data.val() || {};
+      const array = Object.values(Basic);
+      setAboutData(array);
+    })
   },[isAnimated])
-
+  
+  
+  console.log(AboutData);
   return (
     <>
       <Head>
         <title>{EnvVars.SITE_NAME}</title>
         <meta
           name="description"
-          content="Rraf-Project, "
+          content="Satria Muda Logistics "
         />
       </Head>
       <HomepageWrapper>
-        <WhiteBackgroundContainer>
-          <HeroSection>
-            <Hero />
-
-          <BasicSection title="Simple Project." overTitle="Simple Project" reversed>
-            <p>
-              I just make this project just for fun, you can find some <strong>latest news</strong>, <strong>play simple games</strong> and you can login to save your games in this website, <strong>break some puzzle</strong>. lot of feature that you can explore in this website.
-            </p>
-            <ul>
-              <li>Safety website</li>
-              <li>Using the latest security patch</li>
-              <li>OAuth using google</li>
-            </ul>
-          </BasicSection>
-      <AnimatedText>
-          <Partners />
-      </AnimatedText>
-          </HeroSection>
-        </WhiteBackgroundContainer>
-        <DarkerBackgroundContainer>
-          <FeaturesGallery />
+        <Hero />
+            <HeroSection>
+                <Hero2 />
+                {AboutData.map((a: any, i) => {
+                  console.log(a)
+                  return(
+                    <BasicSection key={i} title={a.title} overTitle={a.overTitle} reversed>
+                    <p>
+                      {a.p1}
+                    </p>
+                    <ul>
+                      <li>{a.li1}</li>
+                      <li>{a.li2}</li>
+                      <li>{a.li3}</li>
+                      <li>{a.li4}</li>
+                      <li>{a.li5}</li>
+                    </ul>
+                  </BasicSection>
+                    )
+                  })}
+              <Partners />
+            </HeroSection>
           <Features />
-          <ScrollableBlogPosts posts={posts} />
-        </DarkerBackgroundContainer>
-  </HomepageWrapper>
+      </HomepageWrapper>
     </>
   );
 }
 
-  
 const fadeInUp = keyframes`
 from {
   opacity: 0;
@@ -80,46 +85,3 @@ const HomepageWrapper = styled.div`
     margin-bottom: 15rem;
   }
 `;
-
-const DarkerBackgroundContainer = styled.div`
-  background: rgb(var(--background));
-
-  & > *:not(:first-child) {
-    margin-top: 8rem;
-  }
-`;
-
-const WhiteBackgroundContainer = styled.div`
-  background: rgb(var(--secondBackground));
-
-  & > :last-child {
-    padding-bottom: 4rem;
-  }
-
-  & > *:not(:first-child) {
-    margin-top: 8rem;
-  }
-`;
-
-
-const AnimatedText = styled.div`
-  animation: bounce 2.5s infinite;
-
-  @keyframes bounce {
-    0%, 100% {
-      transform: scale(0.9);
-    }
-    50% {
-      transform: scale(1.0);
-    }
-  }
-`;
-
-
-export async function getStaticProps() {
-  return {
-    props: {
-      posts: await getSingleNews(),
-    },
-  };
-}

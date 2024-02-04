@@ -23,10 +23,7 @@ export type ButtonKategory = {
 
 export type NewsArticle = {
   title: string;
-  thumbnail: string;
-  pubDate: string;
-  link: string;
-  description: string;
+  url: string;
 }
 
 export type NonNullableChildren<T> = { [P in keyof T]: Required<NonNullable<T[P]>> };

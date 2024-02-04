@@ -36,6 +36,7 @@ export default function Page({ title, description, children }: PropsWithChildren
 }
 
 const Wrapper = styled.div`
+  margin-top: -100px;
   background: rgb(var(--background));
 `;
 

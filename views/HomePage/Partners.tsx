@@ -16,7 +16,7 @@ const PARTNER_LOGOS = [
 export default function Partners() {
   return (
     <PartnersWrapper>
-      <Title>special Thanks</Title>
+      <Title>Kerja Sama</Title>
       <Swiper
         modules={[Autoplay]}
         slidesPerView={6}
@@ -45,7 +45,7 @@ function normalizePartnerLogoName(logo: string) {
 }
 
 const Title = styled.h3`
-  font-size: 1.3rem;
+  font-size: 2.3rem;
   letter-spacing: 0.02em;
   line-height: 0;
   text-transform: uppercase;
