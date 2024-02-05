@@ -1,4 +1,5 @@
-import {child, get, orderByChild, ref} from 'firebase/database';
+/* eslint-disable import/order */
+import {child, get, ref} from 'firebase/database';
 import { database } from '../../firebase';
 import styled from "styled-components";
 import { media } from 'utils/media';

@@ -1,9 +1,8 @@
 import { InferGetStaticPropsType } from "next";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AutofitGrid from 'components/AutofitGrid';
 import NewsCard from "components/NewsCard";
-import Page from "components/Page";
 import { NewsArticle } from "types";
 import { media } from 'utils/media';
 import { getSingleNews } from "utils/newsFetcher";
@@ -15,12 +14,15 @@ export default function News({ news }: InferGetStaticPropsType<typeof getStaticP
   const [displayedNews, setDisplayedNews] = useState<NewsArticle[]>(news.slice(0, 5));
   const [showMore, setShowMore] = useState(true);
 
-  const pilihBeritaByKategory = async (category: string) => {
-    const selectedNews = await getSingleNews();
-    setNews(selectedNews);
-    setDisplayedNews(selectedNews.slice(0, 5));
-    setShowMore(true);
-  }
+  useEffect(() => {
+    const pilihBeritaByKategory = async (category: string) => {
+      const selectedNews = await getSingleNews();
+      setNews(selectedNews);
+      setDisplayedNews(selectedNews.slice(0, 5));
+      setShowMore(true);
+    }
+    pilihBeritaByKategory('otomotiv')
+  },[])
 
   const loadMoreNews = () => {
     const currentCount = displayedNews.length;

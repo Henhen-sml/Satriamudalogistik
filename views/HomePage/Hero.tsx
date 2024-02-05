@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import Logo from 'components/Logo';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { el } from 'date-fns/locale';
 
 export default function Hero() {
   const [noResi, setNoResi] = useState("")
   const [BgVid, setBgVid] = useState("");
+  const LacakImg = "https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/mainBanner%2Fico-lacak.svg?alt=media&token=94384ada-5938-40e0-a76a-346520ccca6b";
 
   useEffect(() => {
     const DB = ref(database);
@@ -30,7 +30,6 @@ export default function Hero() {
   };
 
   return (
-    <>
       <VideoWrapper>
         <LogoWrapper>
           <Logo />
@@ -39,32 +38,70 @@ export default function Hero() {
           <Text>WE SERVE BETTER</Text>
           <Text>IN LOGISTIC</Text>
         </TextContent>
-        <InputCard>
-          <HeaderText>
-            <HeaderTextTitle>Lacak Pengiriman</HeaderTextTitle>
-          </HeaderText>
-          <InputWrapper>
-          <ImageWrapper>
-            <Image src='https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/mainBanner%2Fico-lacak.svg?alt=media&token=94384ada-5938-40e0-a76a-346520ccca6b' alt="Search" />
-          </ImageWrapper>
-            <InputResi>
-              <Input placeholder='Nomor Resi' onChange={(e) => setNoResi(e.target.value)}/>
-            </InputResi>
-            <SearchButton onClick={handleSearch}>
-              CARI
-            </SearchButton>
-          </InputWrapper>
-        </InputCard>
+        <CardInput>
+            <Text2>Track Delivery</Text2>
+              <InputWrapper>
+                  <InputResi placeholder='Masukan NoResi'/>
+              </InputWrapper>
+                <ImgWrapper>
+                  <ImgLoct src={LacakImg}/>
+                </ImgWrapper>
+        </CardInput>
             <VideoPlayer src={BgVid} autoPlay loop muted />
       </VideoWrapper>
-    </>
   );
 }
+
+const CardInput = styled.div`
+position: relative;
+top:75%;
+width: 60%;
+left: 20%;
+right: 20%;
+height: 10%;
+z-index: 3;
+background: white;
+border-radius: 20px;
+opacity: 70%;
+
+@media (max-width: 765px) {
+width: 90%;
+left: 5%;
+right: 5%;
+}
+`;
+
+const InputWrapper = styled.div`
+width: 100%;
+left: 50%;
+position: relative;
+`;
+
+const ImgWrapper = styled.div`
+margin-top: -70px;
+margin-left: 20px;
+@media (max-width: 765px) {
+  margin-top: -65px;
+  margin-left: 10px;
+  }
+`
+
+const ImgLoct = styled.img`
+width: 70px;
+@media (max-width: 765px) {
+  width: 60px;
+  }
+`
+
+const InputResi = styled.input`
+
+`;
+
 
 const VideoWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  position: relative;
+  position: flex;
   overflow: hidden;
   margin-top: -100px;
 
@@ -96,14 +133,6 @@ const LogoWrapper = styled.div`
   z-index: 3; /* Menempatkan logo di atas video */
 `;
 
-const ImageWrapper = styled.div`
-margin: 4px;
-`
-
-const Image = styled.img`
-width : 70px;
-`
-
 const TextContent = styled.div`
   position: absolute;
   top: 50%;
@@ -129,84 +158,12 @@ const Text = styled.h1`
   }
 `;
 
-const HeaderText = styled.div`
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black; /* Menentukan warna teks */
-  z-index: 3;
+const Text2 = styled.h1`
+  font-size: 2.5rem;
+  line-height: 60px;
   text-align: center;
-  max-width: 1200px;
-  margin-bottom: 5%;
-`;
-
-const HeaderTextTitle = styled.h3`
-  font-size: 3rem;
-  line-height: 40px;
-
+  margin-top: -1%;
   @media (max-width: 1200px) {
-    font-size: 1.5rem;
-  }
-`;
-
-const InputCard = styled.div`
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3; /* Menempatkan card di atas video */
-  text-align: center;
-  max-width: 70%;
-  width: 90%;
-  height: 8%;
-  border-radius: 31px;
-  overflow: hidden;
-  opacity: 80%;
-  background: white;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;
-
-const InputResi = styled.div`
-  color: white; /* Menentukan warna teks */
-  width: 100%;
-  padding-top: 8px;
-`;
-
-const Input = styled.input`
-  border: 1px solid rgb(var(--inputBackground));
-  background: white;
-  text-align: center;
-  border-radius: 0.6rem;
-  width: 70%;
-  height: 7rem;
-  font-size: 1.6rem;
-  padding: 1.8rem;
-  box-shadow: var(--shadow-md);
-
-  &:focus {
-    outline: none;
-    box-shadow: var(--shadow-lg);
-  }
-`;
-
-const SearchButton = styled.button`
-  width: 20%;
-  height: 7rem;
-  border-radius: 31px;
-  cursor: pointer;
-  border: none;
-  margin: 1px;
-  background: #007bff; /* Ganti warna latar belakang sesuai keinginan Anda */
-  color: white;
-  font-size: 1.6rem;
-
-  &:hover {
-    background: #0056b3; /* Ganti warna latar belakang saat tombol dihover sesuai keinginan Anda */
+    margin-top: -2%;
   }
 `;
