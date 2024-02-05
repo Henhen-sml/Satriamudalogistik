@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="icon" type="image/png" href="/rraf-logo.png" />
+        <link rel="icon" type="image/png" href="/Logo-SML.png" />
       </Head>
         <GlobalStyle />
         <MyAppContents Component={Component} pageProps={pageProps} />

@@ -2,40 +2,24 @@ import { InferGetStaticPropsType } from "next";
 import { useState } from 'react';
 import styled from 'styled-components';
 import AutofitGrid from 'components/AutofitGrid';
-import ButtonCategory from "components/ButtonCategory";
 import NewsCard from "components/NewsCard";
 import Page from "components/Page";
-import { KategoryItems, NewsArticle } from "types";
+import { NewsArticle } from "types";
 import { media } from 'utils/media';
 import { getSingleNews } from "utils/newsFetcher";
+import BasicSection from "components/BasicSection";
 
 
-const Kategory: KategoryItems = [
-  {title: 'terbaru', category: "terbaru"},
-  {title: 'nasional', category: "nasional"},
-  {title: 'metro', category: "metro"},
-  {title: 'ekbis', category: "ekbis"},
-  {title: 'international', category: "international"},
-  {title: 'daerah', category: "daerah"},
-  {title: 'sports',category: "sports"},
-  {title: 'otomotif', category: "otomotif"},
-  {title: 'tekno', category: "tekno"},
-  {title: 'sains', category: "sains"},
-  {title: 'edukasi', category: "edukasi"},
-  {title: 'lifestyle', category: "lifestyle"},
-  {title: 'kalam', category: "kalam"},
-]
 export default function News({ news }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [newsA, setNews] = useState<NewsArticle[]>(news);
   const [displayedNews, setDisplayedNews] = useState<NewsArticle[]>(news.slice(0, 5));
   const [showMore, setShowMore] = useState(true);
 
   const pilihBeritaByKategory = async (category: string) => {
-    const selectedNews = await getSingleNews(category);
+    const selectedNews = await getSingleNews();
     setNews(selectedNews);
     setDisplayedNews(selectedNews.slice(0, 5));
     setShowMore(true);
-
   }
 
   const loadMoreNews = () => {
@@ -60,15 +44,11 @@ export default function News({ news }: InferGetStaticPropsType<typeof getStaticP
   }
 
   return (
-    <Page
-    title="Berita Terkini"
-    description="Cek Update Berita Terkini dari beberapa Platfrom"
+    <BasicSection
+    title="Berita Seputar Otomotif"
     >
-      <Wrapper>
-        <ButtonCategory categories={Kategory} onCategorySelect={pilihBeritaByKategory} />
-      </Wrapper>
       <CustomAutofitGrid>
-        {displayedNews.map((news, i) => (
+        {displayedNews.map((news: any, i) => (
           <NewsCard
             key={Math.random() * i}
             title={news.title}
@@ -82,20 +62,10 @@ export default function News({ news }: InferGetStaticPropsType<typeof getStaticP
       <Wrapper2>
       {showMore && <ShowMoreButton onClick={loadMoreNews}>Lihat Lainnya</ShowMoreButton>}
       </Wrapper2>
-    </Page>
+    </BasicSection>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  min-width: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-  white-space: nowrap;
-  overflow-x: auto;
-  margin-bottom: 3rem;
-`;
 
 const Wrapper2 = styled.div`
   display: flex;

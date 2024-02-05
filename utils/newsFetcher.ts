@@ -4,7 +4,7 @@ import { NewsArticle } from 'types';
 export async function getSingleNews(categorys: string = "terbaru"): Promise<NewsArticle[]> {
     let berita: NewsArticle[] = [];
     try {
-        const response = await axios.get(`https://api-berita-indonesia.vercel.app/sindonews/${categorys}/`);
+        const response = await axios.get(`https://api-berita-indonesia.vercel.app/sindonews/otomotif/`);
         berita = response.data.data.posts;
     } catch (error) {
         throw error;

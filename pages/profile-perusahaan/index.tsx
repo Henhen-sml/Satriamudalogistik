@@ -1,20 +1,35 @@
+import {child , get, ref} from 'firebase/database';
+import {database} from '../../firebase';
 import BasicSection from "components/BasicSection";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from 'styled-components';
+import BasicCard from 'components/BasicCard';
+
+interface Experience{
+  title: string;
+  desc: string;
+  url: string;
+}
 
 export default function Profile() {
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
+  const [exp, setExp] = useState<Experience[]>([]);
     const backgroundImage = "https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/long%20banner.png?alt=media&token=494216b8-998b-4450-8f89-dba858917fe3"
     const ShipImage = "https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/ship.png?alt=media&token=f15bf57d-ef8d-4780-8387-c53f185f5499"
     const HeroSection:any = styled.div`
         animation: ${isAnimated ? fadeInUp : 'none'} 1.5s ease-in-out;
         margin: 1.5rem 0;
         `;
-
+        
   useEffect(() => {
+    const DB = ref(database);
+    get(child(DB, "MainSection/Experience")).then(async(data) => {
+      const Exp = data.val() || {};
+      const Array:Experience[] = Object.values(Exp);
+      setExp(Array);
+    })
     setIsAnimated(true);
   }, [])
-
   return (
     <Wrapper>
             <ImageBgWrapper src={backgroundImage} />
@@ -54,10 +69,15 @@ export default function Profile() {
           </ul>
         </HeroSection>
       </BasicSection>
-      <BasicSection title="OUR EXPERIENCES">
-        <HeroSection>
 
-        </HeroSection>
+        <BasicSection title={"OUR EXPERIENCE"}>
+        {exp.map((a, i) => {
+          return(
+            <HeroSection key={i}>
+                <BasicCard title={a.title} desc={a.desc} url={a.url}/>
+            </HeroSection>
+          )
+        })}
       </BasicSection>
     </Wrapper>
   )
@@ -94,10 +114,7 @@ animation: ${waveAnimation} 20s linear infinite;
 `
 
 const Wrapper = styled.div`
-  align-items: center;
-  & > :last-child {
-    margin-bottom: 15rem;
-  }
+
 `;
 
 const fadeInUp = keyframes`

@@ -23,9 +23,7 @@ export default function Features() {
         const array = Object.values(Post);
         setFeatures(array);
     })
-  },)
-
-  console.log(features)
+  },[])
   return (
     
     <Container>
