@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import { child, get, ref } from 'firebase/database';
 import { database } from '../../firebase.js';
 import styled from 'styled-components';

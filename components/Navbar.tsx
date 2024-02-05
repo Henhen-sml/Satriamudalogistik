@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic';
-import NextImage from 'next/image';
+/* eslint-disable import/order */
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useRef, useState } from 'react';
@@ -12,10 +11,7 @@ import Button from './Button';
 import Container from './Container';
 import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
-import logo from '../public/Logo-SML.png'
 import Logo from './Logo';
-
-const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false });
 
 type NavbarProps = { items: NavItems };
 type ScrollingDirections = 'up' | 'down' | 'none';
@@ -186,9 +182,4 @@ const Content = styled(Container)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`;
-
-const ColorSwitcherContainer = styled.div`
-  width: 4rem;
-  margin: 0 1rem;
 `;

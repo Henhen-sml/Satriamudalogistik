@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   --logoColor: #243A5A;
 }
 
-.next-dark-theme {
+/*.next-dark-theme {
   --background: 26,32,44;
   --secondBackground: 45,55,72;
   --text: 237,237,238;
@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
   --modalBackground: 26,32,44;
   --errorColor: 207,34,46;
   --logoColor: #fff;
-}
+}*/
 
 :root {
   --font: 'Poppins', sans-serif;

@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { WhatsappIcon, FacebookMessengerIcon, EmailIcon } from 'react-share';
+import {  EmailIcon, FacebookMessengerIcon, WhatsappIcon } from 'react-share';
 import styled from 'styled-components';
 import Container from 'components/Container';
 import { media } from 'utils/media';

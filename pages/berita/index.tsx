@@ -1,12 +1,13 @@
-import { InferGetStaticPropsType } from "next";
-import { useState, useEffect } from 'react';
+/* eslint-disable import/order */
+import { InferGetStaticPropsType } from 'next';
+import { useEffect,useState } from 'react';
 import styled from 'styled-components';
 import AutofitGrid from 'components/AutofitGrid';
-import NewsCard from "components/NewsCard";
-import { NewsArticle } from "types";
+import NewsCard from 'components/NewsCard';
+import { NewsArticle } from 'types';
 import { media } from 'utils/media';
-import { getSingleNews } from "utils/newsFetcher";
-import BasicSection from "components/BasicSection";
+import { getSingleNews } from 'utils/newsFetcher';
+import BasicSection from 'components/BasicSection';
 
 
 export default function News({ news }: InferGetStaticPropsType<typeof getStaticProps>) {

@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import { child, get, ref  } from 'firebase/database';
 import { database } from '../firebase.js';
 import Head from 'next/head';
@@ -9,6 +10,7 @@ import Features from 'views/HomePage/Features';
 import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
 import Hero2 from 'views/HomePage/Hero2';
+import CekResi from 'views/HomePage/CekResi';
 
 export default function Homepage() {
   
@@ -41,6 +43,7 @@ export default function Homepage() {
       <HomepageWrapper>
         <Hero />
             <HeroSection>
+              <CekResi />
                 <Hero2 />
                 {AboutData.map((a: any, i) => {
                   return(

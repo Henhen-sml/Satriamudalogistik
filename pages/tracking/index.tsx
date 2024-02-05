@@ -3,26 +3,16 @@ import {child, get, ref} from 'firebase/database';
 import { database } from '../../firebase';
 import styled from "styled-components";
 import { media } from 'utils/media';
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useState } from "react";
 import BasicSection from "components/BasicSection";
 import RichText from '../../components/RichText';
 import Container from '../../components/Container';
 
 export default function Tracking() {
-  const router = useRouter();
-  const { r }:any = router.query;
   const [isSearch, setIsSearch] = useState(false);
   const [data, setData] = useState<unknown[]>([]);
   const [noResi, setNoResi] = useState("");
   const [ Warning, setWarning ] = useState("");
-  
-  useEffect(() => {
-    if (r) {
-      setNoResi(r);
-    }
-
-  }, []);
 
  function cekNoResi(){
     if(!noResi){
@@ -60,7 +50,7 @@ export default function Tracking() {
           <BasicSection title="Lacak Pengiriman">
             <Warn>{Warning}</Warn><br/>
             <Input
-                placeholder={r ? r : "Masukan nomor Resi"}
+                placeholder={"Masukan nomor Resi"}
                 onChange={(e) => inputResi(e.target.value)}
                 /><br />
                 <Button onClick={(e) => cekNoResi()}>Tracking</Button>
@@ -120,30 +110,6 @@ const Title = styled.h1`
   ${media('<=tablet')} {
     font-size: 4.6rem;
     margin-bottom: 2rem;
-  }
-`;
-
-const ImageContainer = styled.div`
-  flex: 1;
-
-  position: relative;
-  &:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: calc((9 / 16) * 100%);
-  }
-
-  & > div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
-  ${media('<=desktop')} {
-    width: 100%;
   }
 `;
 

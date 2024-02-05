@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import { get, ref, child } from 'firebase/database';
 import {database} from '../../firebase';
 import React, { useEffect, useState } from 'react';

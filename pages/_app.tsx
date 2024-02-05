@@ -5,6 +5,7 @@ import 'swiper/css/autoplay';
 
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import Footer from 'components/Footer';
 import { GlobalStyle } from 'components/GlobalStyles';
@@ -12,7 +13,6 @@ import Navbar from 'components/Navbar';
 import NavigationDrawer from 'components/NavigationDrawer';
 import { NewsletterModalContextProvider } from 'contexts/newsletter-modal.context';
 import { NavItems } from 'types';
-import { useRouter } from 'next/router';
 
 const navItemsNotLogin: NavItems = [
   { title: 'Lacak Pengiriman', href: '/tracking' },

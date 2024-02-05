@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import NextLink from 'next/link';
-import Modal from 'react-modal';
+/* eslint-disable import/order */
 import styled from 'styled-components';
 import { media } from 'utils/media';
 

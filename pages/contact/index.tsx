@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import BasicSection from "components/BasicSection";
+/* eslint-disable import/order */
+import React from 'react';
+import styled from 'styled-components';
+import BasicSection from 'components/BasicSection';
 import NextLink from 'next/link';
-import { WhatsappIcon, FacebookMessengerIcon, EmailIcon } from 'react-share';
+import { EmailIcon, FacebookMessengerIcon, WhatsappIcon  } from 'react-share';
 
 export default function Contact() {
 
@@ -10,10 +11,22 @@ export default function Contact() {
   return (
     <BasicSection title="Contact Us">
         <p>
-        Welcome to the seamless experience of ordering our premium products! At Satria Muda Logistics, we've crafted a user-friendly platform to make the ordering process as smooth as possible. Browse our extensive catalog, add your favorite items to the cart, and proceed to checkout effortlessly. Our secure payment gateway ensures the safety of your transactions, and our dedicated team is ready to process and dispatch your order promptly. Expect nothing but excellence from the moment you place your order to the delivery of our exceptional products to your doorstep. Thank you for choosing Satria Muda Logistics, where quality meets convenience.
+        Welcome to the seamless experience of ordering our premium products! 
+        At Satria Muda Logistics, 
+        weve crafted a user-friendly 
+        platform to make the ordering process as 
+        smooth as possible. Browse our extensive catalog, 
+        add your favorite items to the cart, and proceed to checkout effortlessly. 
+        Our secure payment gateway ensures the safety of your transactions,
+        and our dedicated team is ready to process and dispatch your order promptly. 
+        Expect nothing but excellence from the moment you place your order to the 
+        delivery of our exceptional products to your doorstep. Thank you for choosing 
+        Satria Muda Logistics, where quality meets convenience.
         </p><br/>
         <p>
-        Your feedback is invaluable to us at Satria Muda Logistic's products and create something extraordinary. Thank you for being an essential part of our journey.
+        Your feedback is invaluable to us at Satria Muda Logistics 
+        products and create something extraordinary. Thank you for being 
+        an essential part of our journey.
         </p>
         <Wrapper>
           <ShareBar>

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+/* eslint-disable import/order */
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { EffectCards } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,7 +7,6 @@ import Container from 'components/Container';
 import { useResizeObserver } from 'hooks/useResizeObserver';
 import { NewsArticle } from 'types';
 import { media } from 'utils/media';
-import NewsCard from 'components/NewsCard';
 import BannerCard from 'components/BannerCard';
 
 interface ScrollableBlogPostsProps {

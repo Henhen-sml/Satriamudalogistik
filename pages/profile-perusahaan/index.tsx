@@ -1,7 +1,8 @@
+/* eslint-disable import/order */
 import {child , get, ref} from 'firebase/database';
 import {database} from '../../firebase';
-import BasicSection from "components/BasicSection";
-import { useEffect, useState } from "react";
+import BasicSection from 'components/BasicSection';
+import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import BasicCard from 'components/BasicCard';
 
@@ -36,18 +37,28 @@ export default function Profile() {
         <BasicSection title="PROFILE">
                     <HeroSection>
                     <p>
-                        SML established in 2022 and currently has <strong>strategic partners at sea and major airports in all regions in Indonesia</strong>. We specialize in sea and air freight, consolidation, packaging, transport & logistics, warehousing & custom clearance.
+                        SML established in 2022 and currently has 
+                        <strong>strategic partners at sea and major airports in all 
+                          regions in Indonesia</strong>. 
+                          We specialize in sea and air freight, 
+                          consolidation, packaging, transport & logistics,
+                           warehousing & custom clearance.
                     </p>
                     <br />
                     <p>
-                        That's why we still continue to strive, every day, to deliver a more connected, agile and sustainable future for global logistics. that's our goal.
+                        Thats why we still continue to strive, every day, 
+                        to deliver a more connected, 
+                        agile and sustainable future for global logistics. 
+                        thats our goal.
                     </p>
                     </HeroSection>
             </BasicSection>
       <BasicSection title="VISION">
         <HeroSection>
           <p>
-            Become a Logistics Company with integrated solution, Partnership also connecting people, businesses, and communities to a better synergy.
+            Become a Logistics Company with integrated solution, 
+            Partnership also connecting people, businesses, 
+            and communities to a better synergy.
           </p>
         </HeroSection>
       </BasicSection>
@@ -55,14 +66,16 @@ export default function Profile() {
     <BasicSection title="MISSION">
         <HeroSection>
           <p>
-            Providing excellent service for customer satisfaction by applying insight, service quality, and innovation to create sustainable growth for business.
+            Providing excellent service for customer satisfaction 
+            by applying insight, service quality, 
+            and innovation to create sustainable growth for business.
           </p>
         </HeroSection>
     </BasicSection>
       <BasicSection title="OUR VALUE">
         <HeroSection>
           <ul>
-            <li>Focus on customer's needs</li>
+            <li>Focus on customers needs</li>
             <li>Preserve the trust, integrity and accountability in our services</li>
             <li>Conduct ethical business practices</li>
             <li>Strengthen the partnership with all our internal and external customers</li>
