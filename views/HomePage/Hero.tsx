@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 export default function Hero() {
   const [noResi, setNoResi] = useState("")
   const [BgVid, setBgVid] = useState("");
-  const LacakImg = "https://firebasestorage.googleapis.com/v0/b/satria-muda-logistic.appspot.com/o/mainBanner%2Fico-lacak.svg?alt=media&token=94384ada-5938-40e0-a76a-346520ccca6b";
 
   useEffect(() => {
     const DB = ref(database);
@@ -24,7 +23,7 @@ export default function Hero() {
   const router = useRouter();
   const handleSearch = () => {
     if(noResi){
-      router.push(`/tracking?r=${noResi}`);
+      router.push(`/tracking?query=${noResi}`);
     }else{
       alert('Nomor Resi Tidak Boleh Kosong')
     }
@@ -32,13 +31,20 @@ export default function Hero() {
 
   return (
         <VideoWrapper>
+            <VidWrp>
           <LogoWrapper>
             <Logo />
           </LogoWrapper>
           <TextContent>
             <Text>WE SERVE BETTER IN LOGISTIC</Text>
           </TextContent>
-            <VidWrp>
+          <CardInput>
+            <InputWrapper>
+              <Text2>Track Delivery?</Text2>
+                <InputResi placeholder='Nomor Resi' onChange={(e) => setNoResi(e.target.value)}/><br />
+                  <Button onClick={(e) => handleSearch()}>Search</Button>
+            </InputWrapper>
+          </CardInput>
               <VideoPlayer src={BgVid} autoPlay loop muted />
             </VidWrp>
         </VideoWrapper>
@@ -49,115 +55,125 @@ const VidWrp = styled.div`
 width: 100%;
 height: 100vh;
 position: relative;
+display: flex;
 overflow: hidden;
 `
-
 const CardInput = styled.div`
-bottom: 60px;
-display: flex;
-justify-content: center;
-max-width: 80%;
-background: rgba(255,255,255,0.8);
-border-radius: 100px;
-@media (max-width: 1200px){
-  bottom: 48px;
-  margin: 0 68px;
-}
-@media (max-width: 1023px){
-  bottom: 48px;
-  margin: 0 40px;
-}
-@media (max-width: 766px){
-  flex-direction: column;
-  bottom: 48px;
-  margin: 0 24px;
-  border-radius: 42px;
-}
 position: absolute;
-left:0;
-right:0;
-margin: 0 auto;
+padding-top: 5rem;
+text-align: center;
+padding-bottom: 6rem;
+opacity: 70%;
+width: 40%;
+top: 80%;
+left: 50%;
+transform: translate(-50%, -50%);
 z-index: 3;
-overflow:hidden;
-`
-
-
-const Forms = styled.form`
-display: flex;
-align-items: center;
-margin: 0;
-`
-
-const Tags = styled.span`
-box-sizing: border-box;
-line-height: 1;
-flex-grow: 1;
-    display: inline-block;
-    min-width: 80px;
-    margin: 0;
-    padding: 8px 0;
-    font-size: 16px;
-    position: relative;
-    white-space: pre-wrap;
-    color: var(--input-color);
-`;
-
-const InputBox = styled.div`
-width: calc(100% - 52px);
-@media (max-width: 766px){
-  font-size: 13px;
-  line-height: 16px;
+@media (max-width:1200px){
+  width: 80%;
 }
-padding-left: 16px;
-position: relative;
 `
 
 const InputWrapper = styled.div`
-width: 100%;
+width: 80%;
+left: 10%;
 position: relative;
 background: white;
+height: 24rem;
 box-shadow: 0px 8px 15px rgba(0,0,0,0.25);
-border-radius: 100px;
+border-radius: 40px;
 padding-bottom: 0;
+padding-top: 2rem;
+@media (max-width:1200px){
+  height: 20rem;
+}
 `;
 
-const ImgWrapper = styled.div`
-width: 32px;
-`
-
-const ImgLoct = styled.img`
-max-width: 100%;
-overflow-clip-margin: content-box;
-overflow: clip;
-`
 
 const InputResi = styled.input`
-padding: 0 55px 0 0;
 border: 0;
-font-size: 1rem;
+font-size: 3rem;
 font-weight: 300;
 margin: 0;
-height: 24px;
+height: 4rem;
+width: 60%;
+text-align: center;
 line-height: 24px;
 color: #999999;
-@media (max-width: 1023px){
-  font-size: 16px;
+@media (max-width: 1200px){
+  width: 40%;
+  font-size: 2rem;
   line-height; 24px;
 }
-@media (max-width: 766px){
-  font-weight: 400;
-  font-size: 16px;
+@media (max-width: 412px){
+  width: 80%;
+  font-size: 2rem;
   line-height; 24px;
 }
 `;
 
+const Text = styled.h1`
+  font-size: 5rem;
+  line-height: 40px;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  @media (max-width: 1200px) {
+    font-size: 3rem; 
+  }
+`;
+
+const Text2 = styled.h1`
+  font-size: 4rem;
+  line-height: 40px;
+  padding-bottom: 2rem;
+  @media (max-width: 1200px) {
+    padding-top: 0;
+    padding-bottom: 0.5rem;
+    font-size: 2.5rem; 
+  }
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 3rem;
+  background: rgb(12,124,3);
+  padding: 2.25rem 3.25rem;
+  font-size: 1.2rem;
+  color: rgb(var(--textSecondary));
+  text-transform: uppercase;
+  font-family: var(--font);
+  font-weight: bold;
+  border-radius: 2rem;
+  border: none;
+  transition: transform 0.3s;
+  backface-visibility: hidden;
+  will-change: transform;
+  cursor: pointer;
+  
+  @media (max-width: 1200px){
+    margin-top: 1rem;
+
+  }
+
+  span {
+    margin-left: 2rem;
+  }
+
+  &:hover {
+    transform: scale(1.025);
+  }
+`;
 
 const VideoWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  position: flex;
+  dispaly: flex;
   overflow: hidden;
-  margin-top: -76px;
+  margin-top: -80px;
 
   &::before {
     position: absolute;
@@ -202,44 +218,3 @@ const TextContent = styled.div`
     padding: 0 20px;
   }
 `;
-
-const Text = styled.h1`
-  font-size: 5rem;
-  line-height: 40px;
-
-  @media (max-width: 1200px) {
-    font-size: 2.5rem; 
-  }
-`;
-
-const Text2 = styled.label`
-  font-size: 0.875rem;
-  color: #212121;
-  font-weight: 600;
-  display: block;
-  margin: 0 0 4px;
-  line-height: normal;
-  @media (max-width: 1200px) {
-    margin-top: -2%;
-  }
-`;
-
-const Button = styled.a`
-  border-color: #fff;
-  border-radius: 16px;
-  color: #fff;
-  margin: 0;
-  height: 52px;
-  line-height: 50px;
-  cursor: pointer;
-  border: 2px solid #fff;
-  font-size: 2rem;
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: normal;
-  padding: 0 32px;
-  text-align: center;
-  margin-top: 2rem;
-  text-decoration: none;
-  text-transform: none;
-`

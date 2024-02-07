@@ -10,7 +10,7 @@ interface BasicCardProps {
 export default function BasicCard({ title, desc, url }: BasicCardProps) {
   return (
     <Card>
-      <NextImage src={url} width={256} height={256} alt={title} />
+      <NextImage src={url} width={300} height={400} alt={title} />
       <Title>{title}</Title>
       <Description>{desc}</Description>
     </Card>

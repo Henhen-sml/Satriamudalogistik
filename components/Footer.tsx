@@ -11,6 +11,17 @@ type FooterItems = SingleFooterList[];
 
 const footerItems: FooterItems = [
   {
+    title: 'Shortcuts',
+    items: [
+      { title: 'Main page', href: '/' },
+      { title: 'Tracking', href: '/tracking' },
+      { title: 'Our Profile', href: '/profile-perusahaan' },
+      { title: 'Our Services', href: '/produk-dan-layanan' },
+      { title: 'News', href: '/berita' },
+      { title: 'Contact Us', href: '/contact' },
+    ],
+  },
+  {
     title: 'Our Service',
     items: [
       { title: 'Sea Freight FCL/LCL', href: '/produk-dan-layanan' },
@@ -81,8 +92,17 @@ function ListItem({ title, href }: SingleFooterListItem) {
 
 const FooterWrapper = styled.div`
   padding-top: 10rem;
+  max-width: 70%;
+  position: relative;
+  left: 15%;
+  border-radius: 20px;
   padding-bottom: 4rem;
   color: rgb(var(--text));
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  @media (max-width: 1200px){
+    max-width: 100%;
+    left: 0%;
+  }
 `;
 
 const ListContainer = styled.div`

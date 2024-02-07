@@ -3,18 +3,31 @@ import {child, get, ref} from 'firebase/database';
 import { database } from '../../firebase';
 import styled from "styled-components";
 import { media } from 'utils/media';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BasicSection from "components/BasicSection";
 import RichText from '../../components/RichText';
 import Container from '../../components/Container';
+import { useRouter } from 'next/router';
+
 
 export default function Tracking() {
   const [isSearch, setIsSearch] = useState(false);
   const [data, setData] = useState<unknown[]>([]);
   const [noResi, setNoResi] = useState("");
   const [ Warning, setWarning ] = useState("");
+  const router = useRouter();
+  const {query} = router.query;
+  const queryString = typeof query === 'string' ? query : Array.isArray(query) ? query[0] : '';
 
- function cekNoResi(){
+  useEffect(() => {
+    if(queryString){
+        setNoResi(queryString);
+    }
+  },[queryString])
+
+
+  function cekNoResi(){
+    console.log('count');
     if(!noResi){
         setWarning('Silahkan Masukan Nomor Resi Terlebih dahulu')
     }else{
@@ -37,12 +50,13 @@ export default function Tracking() {
             setWarning("No Resi Tidak di temukan/Salah");
         })
     } 
-}
+  }
+  
+
+
  function inputResi(e:string){
-    if(e){
         setWarning("");
         setNoResi(e);
-    }
  }
   return (
       <MainWrapper>
@@ -51,6 +65,7 @@ export default function Tracking() {
             <Warn>{Warning}</Warn><br/>
             <Input
                 placeholder={"Masukan nomor Resi"}
+                value={noResi}
                 onChange={(e) => inputResi(e.target.value)}
                 /><br />
                 <Button onClick={(e) => cekNoResi()}>Tracking</Button>
@@ -60,7 +75,6 @@ export default function Tracking() {
             <WrapperCekResi>
                 <Divider />
                     {data.map((a:any, i) => {
-                        console.log(a)
                         return(
                             <>
                                 <BasicSectionWrapper key={i}>

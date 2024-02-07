@@ -28,13 +28,13 @@ export default function Features() {
   return (
     
     <Container>
-      <CustomAutofitGrid>
-        {features.map((a) => (
-        <AnimatedElement key={a.title}>
-          <BasicCard  {...a} />
-        </AnimatedElement>
-          ))}
-      </CustomAutofitGrid>
+        <CustomAutofitGrid>
+          {features.map((a) => (
+            <AnimatedElement key={a.title}>
+            <BasicCard  {...a} />
+          </AnimatedElement>
+            ))}
+        </CustomAutofitGrid>
     </Container>
   );
 }
@@ -57,3 +57,4 @@ const CustomAutofitGrid = styled(AutofitGrid)`
     --autofit-grid-item-size: 100%;
   }
 `;
+

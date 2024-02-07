@@ -10,12 +10,18 @@ import Features from 'views/HomePage/Features';
 import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
 import Hero2 from 'views/HomePage/Hero2';
-import CekResi from 'views/HomePage/CekResi';
+
+interface AboutDatas {
+  overtitle: string;
+  title: string;
+  p1: string;
+  li:[];
+}
 
 export default function Homepage() {
   
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
-  const [AboutData , setAboutData] = useState<unknown[]>([]);
+  const [AboutData , setAboutData] = useState<AboutDatas[]>([]);
   
   const HeroSection = styled.div`
     animation: ${isAnimated ? fadeInUp : 'none'} 1s ease-in-out;
@@ -26,7 +32,7 @@ export default function Homepage() {
     const DB = ref(database);
     get(child(DB, 'MainSection/BasicSection')).then(async(data) => {
       const Basic = data.val() || {};
-      const array = Object.values(Basic);
+      const array:AboutDatas[] = Object.values(Basic);
       setAboutData(array);
     })
   },[isAnimated])
@@ -43,27 +49,31 @@ export default function Homepage() {
       <HomepageWrapper>
         <Hero />
             <HeroSection>
-              <CekResi />
                 <Hero2 />
-                {AboutData.map((a: any, i) => {
+                {AboutData.map((a, i) => {
+                  console.log(a)
                   return(
                     <BasicSection key={i} title={a.title} reversed>
                     <p>
                       {a.p1}
                     </p>
                     <ul>
-                      <li>{a.li1}</li>
-                      <li>{a.li2}</li>
-                      <li>{a.li3}</li>
-                      <li>{a.li4}</li>
-                      <li>{a.li5}</li>
+                      {a.li ? (
+                        Object.values(a.li).map((val, i) => (
+                          <li key={i}>{val}</li>
+                          )
+                      )) : null}
                     </ul>
                   </BasicSection>
                     )
                   })}
-              <Partners />
+                  <Spacing>
+                    <BasicSection title='Our Services'>
+                      <Features />
+                    </BasicSection>
+                  </Spacing>
             </HeroSection>
-          <Features />
+              <Partners />
       </HomepageWrapper>
     </>
   );
@@ -85,3 +95,7 @@ const HomepageWrapper = styled.div`
     margin-bottom: 15rem;
   }
 `;
+
+const Spacing = styled.div`
+padding-top: 10rem;
+`

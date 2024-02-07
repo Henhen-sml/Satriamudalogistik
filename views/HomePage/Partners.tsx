@@ -31,20 +31,26 @@ export default function Partners() {
       <Title>Kerja Sama</Title>
       <Swiper
         modules={[A11y]}
-        slidesPerView={2}
+        slidesPerView={3}
         spaceBetween={30}
         loop={true}
         className="swiper-wrapper"
       >
         {Partner.map((a: any, i) => (
           <SwiperSlide key={i}>
-            <NextImage src={a.url} alt={a.title} width={128} height={128} />
+            <Images src={a.url} alt={a.title} />
           </SwiperSlide>
         ))}
       </Swiper>
     </PartnersWrapper>
   );
 }
+
+const Images = styled.img`
+width: 200px;
+height: 200px;
+object-fit: contain;
+`
 
 const Title = styled.h3`
   font-size: 2.3rem;
@@ -61,6 +67,8 @@ const Title = styled.h3`
 `;
 
 const PartnersWrapper = styled(Container)`
+padding-top: 12rem;
+
   .swiper-wrapper {
     will-change: transform;
     transition-timing-function: linear;

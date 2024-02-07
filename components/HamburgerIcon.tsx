@@ -4,9 +4,9 @@ export function HamburgerIcon(props: IconProps) {
   return (
     <Icon {...props}>
       <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
+        stroke="white"
+        fill="none"
+        strokeWidth="100"
         viewBox="0 0 1024 1024"
         aria-hidden="true"
         focusable="false"

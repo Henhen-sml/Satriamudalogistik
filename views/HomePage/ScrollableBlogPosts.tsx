@@ -15,7 +15,7 @@ interface ScrollableBlogPostsProps {
 
 export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps) {
   const [hasMounted, setHasMounted] = useState(false);
-  const { ref, width = 2 } = useResizeObserver<HTMLDivElement>();
+  const { ref, width = 1 } = useResizeObserver<HTMLDivElement>();
 
   const oneItemWidth = 350;
   const noOfItems = width / oneItemWidth;
@@ -43,8 +43,7 @@ export default function ScrollableBlogPosts({ posts }: ScrollableBlogPostsProps)
 }
 
 const SwiperContainer = styled(Container)`
-  max-width: 250em;
-  height: 46rem;
+  height: 100%;
 
   & > *:first-child {
     margin-top: 4rem;

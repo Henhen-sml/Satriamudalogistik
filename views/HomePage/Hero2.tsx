@@ -32,7 +32,7 @@ export default function Hero2() {
 }
 
 const SliderContainer = styled(Container)`
-  max-width: 250em;
+  max-width: 140rem;
   height: 46rem;
 
   & > *:first-child {

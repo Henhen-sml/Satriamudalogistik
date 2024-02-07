@@ -25,13 +25,12 @@ export default function Navbar({ items }: NavbarProps) {
   let lastScrollY = useRef(0);
   const lastRoute = useRef('');
   const stepSize = useRef(0);
-
   useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 0);
-
+  
   function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
     const routerPath = router.asPath;
     const hasRouteChanged = routerPath !== lastRoute.current;
-
+    
     if (hasRouteChanged) {
       lastRoute.current = routerPath;
       setScrollingDirection('none');
@@ -125,18 +124,25 @@ const HamburgerMenuWrapper = styled.div`
 
 const LogoWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0.5rem;
   text-decoration: none;
   margin-top: -43px;
+  margin-left: 9rem;
   color: rgb(var(--logoColor));
+  @media (max-width: 1200px){
+    margin-left: 2rem;
+  }
+
+  @media (min-width: 1400px){
+    margin-left: 24rem;
+  }
 `;
 
-
 const NavItemWrapper = styled.div<Partial<SingleNavItem>>`
-  background-color: ${(p) => (p.outlined ? 'rgb(var(--primary))' : 'transparent')};
+  background-color: ${(p) => (p.outlined ? 'rgb(var(--textSecondary))' : 'transparent')};
   border-radius: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   line-height: 2;
 
@@ -147,7 +153,7 @@ const NavItemWrapper = styled.div<Partial<SingleNavItem>>`
 
   a {
     display: flex;
-    color: ${(p) => (p.outlined ? 'rgb(var(--textSecondary))' : 'rgb(var(--text), 0.75)')};
+    color: rgb(var(--textSecondary));
     letter-spacing: 0.025em;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
@@ -180,6 +186,8 @@ const NavbarContainer = styled.div<NavbarContainerProps>`
 
 const Content = styled(Container)`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-`;
+  @media (max-width: 1025px){
+    justify-content: flex-end;
+  }
+  `;
