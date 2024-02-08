@@ -105,8 +105,8 @@ export default function Profile() {
         </HeroSection>
       </BasicSection>
         <VisionMissionWrapper>
-              <Title>OUR EXPERIENCE</Title>
           <BasicSectionNonTitle>
+              <Title>OUR EXPERIENCE</Title>
             <OurExperiences />
           </BasicSectionNonTitle>
         </VisionMissionWrapper>
