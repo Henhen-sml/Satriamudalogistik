@@ -41,13 +41,15 @@ const ImageContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  flex: 1;
+max-width: 100%;
 `;
 
 const BasicSectionWrapper = styled(Container)`
   display: flex;
   align-items: center;
-
+  overflow: hidden;
+  align-items: center;
+  width: 100%;
   ${media('<=desktop')} {
     flex-direction: column;
 
