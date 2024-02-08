@@ -53,4 +53,7 @@ const BasicSectionWrapper2 = styled(Container)`
   align-items: center;
   padding-top: 12rem;
   padding-bottom: 12rem;
+  @media (max-width: 512px){
+    width: 100%;
+  }
 `;

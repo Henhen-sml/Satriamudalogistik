@@ -39,10 +39,10 @@ const Title = styled.h1`
 const ContentContainer = styled.div`
   background: rgb(var(--navbarBackground));
   border-radius: 3rem;
-  padding: 3rem;
+  padding: 1.5rem;
   box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
+  max-width: 100%;
   @media (max-width: 1200px){
-    max-width: 100%;
   }
 `;
 
@@ -53,4 +53,7 @@ const BasicSectionWrapper2 = styled(Container)`
   align-items: center;
   padding-top: 6rem;
   padding-bottom: 6rem;
+  @media (max-width: 512px){
+    width: 100%;
+  }
 `;
