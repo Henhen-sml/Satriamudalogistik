@@ -9,7 +9,7 @@ export interface BasicSectionProps {
   reversed?: boolean;
 }
 
-export default function BasicSection2({ title, reversed, children }: PropsWithChildren<BasicSectionProps>) {
+export default function BasicSectionOurExperience({ title, children }: PropsWithChildren<BasicSectionProps>) {
   return (
     <BasicSectionWrapper2>
       <ContentContainer>
@@ -28,7 +28,7 @@ const Title = styled.h1`
   padding-top: 2rem;
   padding-left: 0.6rem;
   letter-spacing: -0.03em;
-  color: rgb(var(--textSecondary));
+  color: rgb(var(--text));
 
   ${media('<=tablet')} {
     font-size: 4.6rem;
@@ -37,7 +37,7 @@ const Title = styled.h1`
 `;
 
 const ContentContainer = styled.div`
-  background: rgb(var(--navbarBackground));
+  background: rgb(255,255,255);
   border-radius: 3rem;
   padding: 3rem;
   box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
@@ -51,6 +51,6 @@ const BasicSectionWrapper2 = styled(Container)`
   display: flex;
   overflow: hidden;
   align-items: center;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
 `;

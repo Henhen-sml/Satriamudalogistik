@@ -10,11 +10,9 @@ import { EnvVars } from 'env';
 import Features from 'views/HomePage/Features';
 import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
-import Hero2 from 'views/HomePage/Hero2';
-import NewsCard from 'components/NewsCard';
-import { formatDate } from 'utils/formatDate';
-import { getSingleNews } from 'utils/newsFetcher';
-import BasicSection3 from 'components/BasicSection3';
+import BasicSectionOurExperience from 'components/BasicSectionOurExperience'
+import OurExperiences from 'views/HomePage/OurExperience';
+import BeritaLogistik from 'views/HomePage/BeritaLogistik';
 
 interface AboutDatas {
   overtitle: string;
@@ -27,10 +25,10 @@ export default function Homepage() {
   
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
   const [AboutData , setAboutData] = useState<AboutDatas[]>([]);
-  const [news, setNews] = useState([])
   const HeroSection = styled.div`
     animation: ${isAnimated ? fadeInUp : 'none'} 1s ease-in-out;
   `;
+
 
   useEffect(() => {
     setIsAnimated(true);
@@ -41,12 +39,7 @@ export default function Homepage() {
       setAboutData(array);
     })
 
-    const pilihBeritaByKategory = async (category: string) => {
-      const selectedNews:any = await getSingleNews();
-      setNews(selectedNews);
-      console.log(selectedNews);
-    }
-    pilihBeritaByKategory('otomotiv')
+    setIsAnimated(true);
 
   },[isAnimated])
   
@@ -62,7 +55,6 @@ export default function Homepage() {
       <HomepageWrapper>
         <Hero />
             <HeroSection>
-                <Hero2 />
                 {AboutData.map((a, i) => {
                   console.log(a)
                   return(
@@ -84,23 +76,13 @@ export default function Homepage() {
                         <Features />
                     </BasicSection2>
             </HeroSection>
+            <BasicSectionOurExperience title="OUR EXPERIENCE">
+                    <OurExperiences />
+            </BasicSectionOurExperience>
               <Partners />
-                  <BasicSection3 title="Aktifitas Terbaru Kami">
-                    <ScrollableContainer>
-                      <Container>
-                        {news.slice(0, 10).map((news: any, i) => (
-                          <NewsCard
-                          key={Math.random() * i}
-                          title={news.title}
-                          thumbnail={news.thumbnail}
-                          pubDate={formatDate(news.pubDate)}
-                          link={news.link}
-                          description={news.description}
-                          />
-                          ))}
-                      </Container>
-                    </ScrollableContainer>
-                  </BasicSection3>
+                  <BasicSection2 title="Aktifitas Terbaru Kami">
+                        <BeritaLogistik />
+                  </BasicSection2>
 
       </HomepageWrapper>
     </>
@@ -123,16 +105,3 @@ const HomepageWrapper = styled.div`
     margin-bottom: 15rem;
   }
 `;
-
-const ScrollableContainer = styled.div`
-  max-width: 120rem;
-  height: 100%;
-  -webkit-overflow-scrolling: touch; 
-`
-  
- const Container = styled.div`
-  overflow-x: auto;
-  display: flex;
-  align-items: center;
-  padding: 2rem;
-  ` 

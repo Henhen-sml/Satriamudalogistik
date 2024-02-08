@@ -53,17 +53,21 @@ export default function Hero() {
 
 const VidWrp = styled.div`
 width: 100%;
-height: 100vh;
+max-height: 50rem;
 position: relative;
 display: flex;
 overflow: hidden;
+@media (max-width:1200px){
+  height: 40rem;
+}
 `
+
 const CardInput = styled.div`
 position: absolute;
 padding-top: 5rem;
 text-align: center;
-padding-bottom: 6rem;
-opacity: 70%;
+padding-bottom: 10rem;
+opacity: 60%;
 width: 35%;
 top: 80%;
 left: 50%;
@@ -71,7 +75,11 @@ transform: translate(-50%, -50%);
 z-index: 3;
 transition: opacity 0.3;
 @media (max-width:1200px){
-  width: 80%;
+  width: 50%;
+}
+@media (max-width:512px){
+  width: 100%;
+
 }
 &:hover {
   opacity: 100%;
@@ -121,7 +129,6 @@ const InputResi = styled.input`
 const Text = styled.h1`
   font-size: 5rem;
   line-height: 40px;
-  padding-top: 2rem;
   padding-bottom: 1.5rem;
   @media (max-width: 1200px) {
     font-size: 3rem; 
@@ -133,7 +140,7 @@ const Text2 = styled.h1`
   line-height: 40px;
   padding-bottom: 2rem;
   @media (max-width: 1200px) {
-    padding-top: 0;
+    padding-top: -1rem;
     padding-bottom: 0.5rem;
     font-size: 2.5rem; 
   }
@@ -176,7 +183,6 @@ const Button = styled.button`
 
 const VideoWrapper = styled.div`
   width: 100%;
-  height: 100vh;
   dispaly: flex;
   overflow: hidden;
   margin-top: -80px;

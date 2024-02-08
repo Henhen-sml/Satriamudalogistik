@@ -22,7 +22,7 @@ export default function BasicSection2({ title, reversed, children }: PropsWithCh
 
 
 const Title = styled.h1`
-  font-size: 5.2rem;
+  font-size: 4.2rem;
   font-weight: bold;
   line-height: 1.1;
   padding-top: 2rem;
@@ -31,7 +31,7 @@ const Title = styled.h1`
   color: rgb(var(--text));
 
   ${media('<=tablet')} {
-    font-size: 4.6rem;
+    font-size: 3.6rem;
     margin-bottom: 2rem;
   }
 `;

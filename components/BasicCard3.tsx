@@ -6,16 +6,18 @@ interface BasicCardProps {
   url: string;
 }
 
-export default function BasicCard2({ title, desc, url }: BasicCardProps) {
+export default function BasicCard3({ title, desc, url }: BasicCardProps) {
   return (
     <Card>
-      <Title>{title}</Title>
       <Images src={url} />
-      <Description>
-        <Text>
-          {desc}
-        </Text>
-        </Description>
+        <ContentWrapper>
+          <Title>{title}</Title>
+            <Description>
+              <Text>
+                {desc}
+              </Text>
+            </Description>
+        </ContentWrapper>
     </Card>
   );
 }
@@ -52,12 +54,17 @@ const Card = styled.div`
   }
   
 `
+const ContentWrapper = styled.div`
+position: relative;
+text-align: center;
+padding: 2rem;
+`
 
 const Title = styled.div`
-  font-weight: bold;
-  font-size: 2rem;
-  padding-top: 0.6rem;
-  max-width: 60%;
+font-weight: bold;
+font-size: 1.5rem;
+padding-top: 0.6rem;
+max-width: 100%;
 `;
 
 const Description = styled.div`
