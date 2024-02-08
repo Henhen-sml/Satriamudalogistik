@@ -55,5 +55,4 @@ const AnimatedElement = styled.div`
   display: flex;
   align-items: center;
   padding: 2rem;
-  
   ` 

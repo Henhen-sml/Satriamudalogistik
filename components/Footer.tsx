@@ -199,8 +199,12 @@ max-width: 12em;
 margin-top: -40px;
 margin-right: 4rem;
 margin-left: -2rem;
-@media (max-width: 1024px){
+@media (max-width: 1200px){
   margin-left: -4rem;
+  margin-right: 7rem;
+}
+@media (max-width: 1200px){
+  margin-left: 2rem;
   margin-right: 7rem;
 }
 `
