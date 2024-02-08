@@ -67,11 +67,12 @@ const ArticleCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 45rem;
-  max-width: 35rem;
+  max-width: 30rem;
   overflow: hidden;
   text-decoration: none;
   border-radius: 0.6rem;
-  background: rgb(var(--cardBackground));
+  padding: 2rem;
+  background: rgb(255,255,255);
   cursor: pointer;
   color: rgb(var(--text));
 `;

@@ -4,7 +4,7 @@ import { database } from '../../firebase';
 import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { A11y } from 'swiper';
+import { EffectCards } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
 import { media } from 'utils/media';
@@ -30,14 +30,14 @@ export default function Partners() {
     <PartnersWrapper>
       <Title>Kerja Sama</Title>
       <Swiper
-        modules={[A11y]}
+        modules={[EffectCards]}
         slidesPerView={3}
         spaceBetween={30}
         loop={true}
         className="swiper-wrapper"
       >
         {Partner.map((a: any, i) => (
-          <SwiperSlide key={i}>
+          <SwiperSlide zoom key={i}>
             <Images src={a.url} alt={a.title} />
           </SwiperSlide>
         ))}
@@ -68,6 +68,7 @@ const Title = styled.h3`
 
 const PartnersWrapper = styled(Container)`
 padding-top: 12rem;
+padding-bottom: 12rem;
 
   .swiper-wrapper {
     will-change: transform;

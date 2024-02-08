@@ -3,10 +3,7 @@ import { get, ref, child } from 'firebase/database';
 import {database} from '../../firebase';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import AutofitGrid from 'components/AutofitGrid';
-import BasicCard from 'components/BasicCard';
-import Container from 'components/Container';
-import { media } from 'utils/media';
+import BasicCard2 from 'components/BasicCard2';
 
 interface PostData {
   desc : string;
@@ -26,35 +23,37 @@ export default function Features() {
     })
   },[])
   return (
-    
-    <Container>
-        <CustomAutofitGrid>
-          {features.map((a) => (
+    <ScrollableContainer>
+      <Container>
+            {features.map((a) => (
             <AnimatedElement key={a.title}>
-            <BasicCard  {...a} />
-          </AnimatedElement>
-            ))}
-        </CustomAutofitGrid>
-    </Container>
+              <BasicCard2  {...a} />
+            </AnimatedElement>
+              ))}
+      </Container>
+    </ScrollableContainer>
   );
 }
-const AnimatedElement = styled.div`
-  transition: transform 0.3s ease;
 
+const ScrollableContainer = styled.div`
+  max-width: 120rem;
+  height: 100%;
+  -webkit-overflow-scrolling: touch; 
+
+`
+
+const AnimatedElement = styled.div`
+  padding: 2rem;
+  transition: transform 0.3s ease;
   &:hover {
     transform: scale(0.9);
   }
-`;
-
-const CustomAutofitGrid = styled(AutofitGrid)`
-  --autofit-grid-item-size: 40rem;
-
-  ${media('<=tablet')} {
-    --autofit-grid-item-size: 30rem;
-  }
-
-  ${media('<=phone')} {
-    --autofit-grid-item-size: 100%;
-  }
-`;
-
+  `;
+  
+ const Container = styled.div`
+  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  
+  ` 

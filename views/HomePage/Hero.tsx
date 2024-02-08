@@ -64,13 +64,17 @@ padding-top: 5rem;
 text-align: center;
 padding-bottom: 6rem;
 opacity: 70%;
-width: 40%;
+width: 35%;
 top: 80%;
 left: 50%;
 transform: translate(-50%, -50%);
 z-index: 3;
+transition: opacity 0.3;
 @media (max-width:1200px){
   width: 80%;
+}
+&:hover {
+  opacity: 100%;
 }
 `
 
@@ -91,26 +95,28 @@ padding-top: 2rem;
 
 
 const InputResi = styled.input`
-border: 0;
-font-size: 3rem;
-font-weight: 300;
-margin: 0;
-height: 4rem;
-width: 60%;
-text-align: center;
-line-height: 24px;
-color: #999999;
-@media (max-width: 1200px){
-  width: 40%;
-  font-size: 2rem;
-  line-height; 24px;
-}
-@media (max-width: 412px){
-  width: 80%;
-  font-size: 2rem;
-  line-height; 24px;
-}
+  border: 0;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+  height: 4rem;
+  width: 60%;
+  text-align: center;
+  line-height: 24px;
+  
+  @media (max-width: 1200px){
+    width: 40%;
+    font-size: 2rem;
+    line-height; 24px;
+  }
+  @media (max-width: 412px){
+    width: 80%;
+    font-size: 2rem;
+    line-height; 24px;
+  }
+
 `;
+
 
 const Text = styled.h1`
   font-size: 5rem;
@@ -123,7 +129,7 @@ const Text = styled.h1`
 `;
 
 const Text2 = styled.h1`
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 40px;
   padding-bottom: 2rem;
   @media (max-width: 1200px) {
