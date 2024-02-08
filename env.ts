@@ -1,3 +1,3 @@
 export const EnvVars = {
-  SITE_NAME: 'satria-muda-logistic',
+  SITE_NAME: 'SatriaMudaLogistic',
 };

@@ -1,6 +1,4 @@
 /* eslint-disable import/order */
-import { child, get, ref  } from 'firebase/database';
-import { database } from '../firebase.js';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styled, {keyframes} from 'styled-components';
@@ -14,17 +12,9 @@ import BasicSectionOurExperience from 'components/BasicSectionOurExperience'
 import OurExperiences from 'views/HomePage/OurExperience';
 import BeritaLogistik from 'views/HomePage/BeritaLogistik';
 
-interface AboutDatas {
-  overtitle: string;
-  title: string;
-  p1: string;
-  li:[];
-}
-
 export default function Homepage() {
   
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
-  const [AboutData , setAboutData] = useState<AboutDatas[]>([]);
   const HeroSection = styled.div`
     animation: ${isAnimated ? fadeInUp : 'none'} 1s ease-in-out;
   `;
@@ -32,58 +22,75 @@ export default function Homepage() {
 
   useEffect(() => {
     setIsAnimated(true);
-    const DB = ref(database);
-    get(child(DB, 'MainSection/BasicSection')).then(async(data) => {
-      const Basic = data.val() || {};
-      const array:AboutDatas[] = Object.values(Basic);
-      setAboutData(array);
-    })
-
-    setIsAnimated(true);
-
-  },[isAnimated])
+  },[])
   
   return (
     <>
       <Head>
-        <title>{EnvVars.SITE_NAME}</title>
+      <title>{EnvVars.SITE_NAME}</title>
         <meta
           name="description"
-          content="Satria Muda Logistics|We serve better in logistics"
+          content="Satria Muda Logistics | We serve better in logistics"
         />
       </Head>
       <HomepageWrapper>
         <Hero />
             <HeroSection>
-                {AboutData.map((a, i) => {
-                  console.log(a)
-                  return(
-                    <BasicSection key={i} title={a.title} reversed>
-                    <p>
-                      {a.p1}
-                    </p>
-                    <ul>
-                      {a.li ? (
-                        Object.values(a.li).map((val, i) => (
-                          <li key={i}>{val}</li>
-                          )
-                      )) : null}
-                    </ul>
-                  </BasicSection>
-                    )
-                  })}
-                    <BasicSection2 title='Our Services'>
-                        <Features />
-                    </BasicSection2>
+              <BasicSection title='PT SATRIA MUDA LOGISTIC' reversed>
+                <p>SML established in 2022 and currently has
+                  strategic partners at sea and major airports in all
+                  regions in Indonesia. We are specialize in sea and
+                  air freight, consolidation, packaging, transport &
+                  logistics, warehousing & customs clearance.
+                  </p>
+                  <br />
+                  <p>That&apos;s why we will continue to strive, every day, 
+                    to deliver a more connected, agile and 
+                    sustainable future for global logistics. that is our goal.
+                  </p>
+              </BasicSection>
             </HeroSection>
-            <BasicSectionOurExperience title="OUR EXPERIENCE">
-                    <OurExperiences />
-            </BasicSectionOurExperience>
-              <Partners />
-                  <BasicSection2 title="Aktifitas Terbaru Kami">
-                        <BeritaLogistik />
-                  </BasicSection2>
 
+            <BasicSection2 title='OUR SERVICES'>
+              <Features />
+            </BasicSection2>
+
+            <HeroSection>
+              <BasicSection title='Why PT SATRIA MUDA LOGISTIC ?' reversed>
+                <p>Project Cargo remains SML&apos;s
+                  core business, with a primary
+                  focus on industries related to
+                  Automotive, Oil and Gas,
+                  Energy, Power Generation,
+                  Mining, Industrial
+                  Commodities, Metals and
+                  Infrastructure projects.
+                  </p>
+                  <br />
+                  <p>That&apos;s why we will continue to strive, every day, 
+                    to deliver a more connected, agile and 
+                    sustainable future for global logistics. that is our goal.
+                  </p>
+                  <ul>
+                    <li>Focus on our customer&apos;s needs.</li>
+                    <li> Preserve the trust, integrity and
+                        accountability in our services.</li>
+                    <li>Conduct ethical business practices.</li>
+                    <li>Strengthen the partnership with all
+                        our internal and external customers.</li>
+                  </ul>
+              </BasicSection>
+            </HeroSection>
+
+            <BasicSectionOurExperience title="OUR EXPERIENCE">
+                <OurExperiences />
+            </BasicSectionOurExperience>
+
+                <Partners />
+
+            <BasicSection2 title="Aktifitas Terbaru Kami">
+                <BeritaLogistik />
+            </BasicSection2>
       </HomepageWrapper>
     </>
   );

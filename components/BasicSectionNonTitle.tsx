@@ -1,37 +1,20 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { media } from 'utils/media';
 import Container from './Container';
 import RichText from './RichText';
 
-export interface BasicSectionProps {
-  title: string;
-  reversed?: boolean;
-}
 
-export default function BasicSection({ title, reversed, children }: PropsWithChildren<BasicSectionProps>) {
+export default function BasicSectionNonTitle({ children }:any) {
   return (
-    <BasicSectionWrapper reversed={reversed}>
+    <BasicSectionWrapper>
       <ContentContainer>
-        <Title>{title}</Title>
         <RichText>{children}</RichText>
       </ContentContainer>
     </BasicSectionWrapper>
   );
 }
 
-const Title = styled.h1`
-  font-size: 5.2rem;
-  font-weight: bold;
-  line-height: 1.1;
-  margin-bottom: 4rem;
-  letter-spacing: -0.03em;
-
-  ${media('<=tablet')} {
-    font-size: 4.6rem;
-    margin-bottom: 2rem;
-  }
-`;
 
 const ImageContainer = styled.div`
   flex: 1;
@@ -61,17 +44,9 @@ const ContentContainer = styled.div`
   flex: 1;
 `;
 
-type Props = Pick<BasicSectionProps, 'reversed'>;
 const BasicSectionWrapper = styled(Container)`
-padding-top: 8rem;
-padding-bottom: 8rem;
   display: flex;
   align-items: center;
-  flex-direction: ${(p: Props) => (p.reversed ? 'row-reverse' : 'row')};
-
-  ${ImageContainer} {
-    margin: ${(p: Props) => (p.reversed ? '0 0 0 5rem' : '0 5rem 0 0')};
-  }
 
   ${media('<=desktop')} {
     flex-direction: column;

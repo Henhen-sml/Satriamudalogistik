@@ -9,7 +9,7 @@ export interface BasicSectionProps {
   reversed?: boolean;
 }
 
-export default function BasicSection2({ title, reversed, children }: PropsWithChildren<BasicSectionProps>) {
+export default function BasicSection2({ title, children }: PropsWithChildren<BasicSectionProps>) {
   return (
     <BasicSectionWrapper2>
       <ContentContainer>
@@ -41,9 +41,7 @@ const ContentContainer = styled.div`
   border-radius: 3rem;
   padding: 3rem;
   box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
-  @media (max-width: 1200px){
-    max-width: 100%;
-  }
+  max-width: 100%;
 `;
 
 
@@ -53,7 +51,5 @@ const BasicSectionWrapper2 = styled(Container)`
   align-items: center;
   padding-top: 6rem;
   padding-bottom: 6rem;
-  @media (max-width: 512px){
-    width: 100%;
-  }
+  width: 100%;
 `;

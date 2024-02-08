@@ -27,8 +27,8 @@ export default function OurExperiences() {
   return (
     <ScrollableContainer>
       <Container>
-            {experience.map((a) => (
-            <AnimatedElement key={a.title}>
+            {experience.map((a, i) => (
+            <AnimatedElement key={i}>
               <BasicCard2  {...a} />
             </AnimatedElement>
               ))}

@@ -28,7 +28,7 @@ export default function Partners() {
 
   return (
     <PartnersWrapper>
-      <Title>Kerja Sama</Title>
+      <Title>CUSTOMER PARTNERSHIP</Title>
       <Swiper
         modules={[EffectCards]}
         slidesPerView={3}

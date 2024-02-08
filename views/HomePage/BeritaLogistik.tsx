@@ -12,7 +12,6 @@ export default function BeritaLogistik() {
     const pilihBeritaByKategory = async (category: string) => {
       const selectedNews:any = await getSingleNews();
       setNews(selectedNews);
-      console.log(selectedNews);
     }
     pilihBeritaByKategory('otomotiv')
   },[])
