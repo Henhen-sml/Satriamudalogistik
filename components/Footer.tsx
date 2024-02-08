@@ -64,7 +64,7 @@ export default function Footer() {
             <NextLink href='/'>
                 <LogoDark />
             </NextLink>
-            <TextWrapper>
+            <TextWrapper> 
             We Serve Better in Logistic
             </TextWrapper>
           </TextContainer>
@@ -203,9 +203,10 @@ margin-left: -2rem;
   margin-left: -4rem;
   margin-right: 7rem;
 }
-@media (max-width: 1200px){
-  margin-left: 2rem;
+@media (max-width: 512px){
+  margin-left: 7rem;
   margin-right: 7rem;
+  margin-bottom: 6rem;
 }
 `
 

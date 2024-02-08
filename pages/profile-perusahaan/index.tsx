@@ -6,9 +6,9 @@ import Head from 'next/head';
 import { EnvVars } from 'env';
 import Image from 'next/image';
 import BasicSectionNonTitle from 'components/BasicSectionNonTitle';
-import BasicSection2 from 'components/BasicSection2';
 import OurExperiences from 'views/HomePage/OurExperience';
 import Partners from 'views/HomePage/Partners';
+import { media } from 'utils/media';
 
 export default function Profile() {
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
@@ -104,9 +104,10 @@ export default function Profile() {
           </ul>
         </HeroSection>
       </BasicSection>
-        <BasicSection2 title={"OUR EXPERIENCE"}>
+        <VisionMissionWrapper>
+          <Title>OUR EXPERIENCE</Title>
           <OurExperiences />
-      </BasicSection2>
+        </VisionMissionWrapper>
         <Partners />
     </Wrapper>
   )
@@ -131,7 +132,7 @@ const ImageBgWrapper = styled.img`
 const Container = styled.div`
 display: flex;
 align-items: center;
-gap: 10px;
+gap: 2px;
 `;
 
 const TextWrapper = styled.div`
@@ -142,6 +143,20 @@ const Text = styled.p`
   position: relative;
   z-index: 1;
 `
+const Title = styled.h1`
+  font-size: 5.2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  padding-top: 2rem;
+  padding-left: 0.6rem;
+  letter-spacing: -0.03em;
+  color: rgb(var(--textSecondary));
+
+  ${media('<=tablet')} {
+    font-size: 4.6rem;
+    margin-bottom: 2rem;
+  }
+`;
 
 const Waveing = keyframes`
 0% {
@@ -161,9 +176,9 @@ height: 256px;
 order: 1; /* Mengatur urutan gambar ke posisi terakhir */
 animation: ${Waveing} 6s linear infinite;
 @media (max-width: 512px){
-  width: 128px;
-  height: 128px;
-  order: 0;
+  width: 120px;
+  height: 120px;
+  order: 1;
 }
 `
 
@@ -172,8 +187,8 @@ width: 260px;
 height: 200px;
 order: 0; 
 @media (max-width: 512px){
-  width: 160px;
-  height: 100px;
+  width: 120px;
+  height: 80px;
   order: 0;
 }
 `
@@ -191,7 +206,7 @@ transform: scaleX(-1);
 `
 
 const Wrapper = styled.div`
-padding: 2rem;
+
 `
 
 const fadeInUp = keyframes`
@@ -207,7 +222,6 @@ const fadeInUp = keyframes`
 
 const VisionMissionWrapper = styled.div`
 background: rgb(var(--navbarBackground));
-border-radius: 3rem;
 box-shadow: 0px 0px 20px rgba(0,0,0, 0.5);
 max-width: 100%;
 color: white;
