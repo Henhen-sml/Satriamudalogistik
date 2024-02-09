@@ -129,10 +129,10 @@ export default function Tracking() {
                                                 <p>POD Date:<br/><strong>{a.timeMake}</strong></p>
                                             </HorizonWrapper>
                                             <HorizonWrapper>
-                                                <p>Estimated Time Delivery:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Estimated Time Arrived:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Actual Time Delivery:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Actual Time Arrived:<br/><strong>{a.timeMake}</strong></p>
+                                                <p>Estimated Time Departure:<br/><strong>{a.timeMake}</strong></p>
+                                                <p>Estimated Time Arrival:<br/><strong>{a.timeMake}</strong></p>
+                                                <p>Actual Time Departure:<br/><strong>{a.timeMake}</strong></p>
+                                                <p>Actual Time Arrival:<br/><strong>{a.timeMake}</strong></p>
                                                 <br />
                                             </HorizonWrapper>
                                             <HorizonWrapper2>
