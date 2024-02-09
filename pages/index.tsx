@@ -88,7 +88,7 @@ export default function Homepage() {
 
                 <Partners />
 
-            <BasicSection2 title="Aktifitas Terbaru Kami">
+            <BasicSection2 title="LATEST ACTIVITY">
                 <BeritaLogistik />
             </BasicSection2>
       </HomepageWrapper>

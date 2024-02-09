@@ -13,8 +13,9 @@ const RichText = styled.div`
 
     li {
       padding-left: 2rem;
+      padding-top: 2rem;
       position: relative;
-
+      font-weight: bold;
       & > * {
         display: inline-block;
         vertical-align: top;
@@ -24,6 +25,8 @@ const RichText = styled.div`
         position: absolute;
         content: 'L';
         left: 0;
+        
+      padding-top: 2rem;
         top: 0;
         text-align: center;
         color: rgb(var(--primary));

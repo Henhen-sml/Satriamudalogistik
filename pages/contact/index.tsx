@@ -4,11 +4,14 @@ import styled from 'styled-components';
 import BasicSection from 'components/BasicSection';
 import NextLink from 'next/link';
 import { EmailIcon, FacebookMessengerIcon, WhatsappIcon  } from 'react-share';
+import BasicSection2 from 'components/BasicSection2';
+import BeritaLogistik from 'views/HomePage/BeritaLogistik';
 
 export default function Contact() {
 
 
   return (
+    <>
     <BasicSection title="Contact Us">
         <p>
         Welcome to the seamless experience of ordering our premium products! 
@@ -46,6 +49,10 @@ export default function Contact() {
           </ShareBar>
         </Wrapper>
     </BasicSection>
+        <BasicSection2 title="LATEST ACTIVITY">
+            <BeritaLogistik />
+        </BasicSection2>
+    </>
   );
 }
 

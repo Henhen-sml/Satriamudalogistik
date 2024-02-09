@@ -182,7 +182,7 @@ animation: ${Waveing} 6s linear infinite;
   height: 120px;
   order: 1;
 }
-`
+`;
 
 const Images2 = styled(Image)`
 width: 260px;
