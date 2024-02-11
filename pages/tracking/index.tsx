@@ -13,10 +13,24 @@ import {EnvVars} from '../../env';
 import BasicSection2 from 'components/BasicSection2';
 import BeritaLogistik from 'views/HomePage/BeritaLogistik';
 
+interface DataRes {
+  ATA: string;
+  ATD: string;
+  ETA: string;
+  ETD: string;
+  deliveryFrom: string;
+  destination: string;
+  goodsName: string;
+  namaU: string;
+  noResi: string;
+  status: string;
+  timeMake: string;
+}
+
 
 export default function Tracking() {
   const [isSearch, setIsSearch] = useState(false);
-  const [data, setData] = useState<unknown[]>([]);
+  const [data, setData] = useState<DataRes[]>([]);
   const [noResi, setNoResi] = useState("");
   const [search, setSearch] = useState(false);
   const [ Warning, setWarning ] = useState("");
@@ -51,7 +65,7 @@ export default function Tracking() {
                 setWarning("Resi Number Can't be found!");
                 setSearch(false);
             }else{
-                const Array = Object.values(Data[noResi]);
+                const Array:DataRes[] = Object.values(Data[noResi]);
                 setIsSearch(true);
                 setWarning("");
                 setData(Array);
@@ -121,18 +135,18 @@ export default function Tracking() {
                                         <RichText>
                                             <HorizonWrapper>
                                                 <p>Customers Name:<br/><strong>{a.namaU}</strong></p>
-                                                <p>Goods Name:<br/><strong>{a.services}</strong></p>
+                                                <p>Goods Name:<br/><strong>{a.goodsName}</strong></p>
                                             </HorizonWrapper>
                                             <HorizonWrapper>
-                                                <p>Delivery From:<br/><strong>{a.from}</strong></p>
-                                                <p>Delivery To:<br/><strong>{a.dest}</strong></p>
+                                                <p>Delivery From:<br/><strong>{a.deliveryFrom}</strong></p>
+                                                <p>Delivery To:<br/><strong>{a.destination}</strong></p>
                                                 <p>POD Date:<br/><strong>{a.timeMake}</strong></p>
                                             </HorizonWrapper>
                                             <HorizonWrapper>
-                                                <p>Estimated Time Departure:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Estimated Time Arrival:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Actual Time Departure:<br/><strong>{a.timeMake}</strong></p>
-                                                <p>Actual Time Arrival:<br/><strong>{a.timeMake}</strong></p>
+                                                <p>Estimated Time Departure:<br/><strong>{a.ETD || "N/A"}</strong></p>
+                                                <p>Estimated Time Arrival:<br/><strong>{a.ETA || "N/A"}</strong></p>
+                                                <p>Actual Time Departure:<br/><strong>{a.ATD || "N/A"}</strong></p>
+                                                <p>Actual Time Arrival:<br/><strong>{a.ATA || "N/A"}</strong></p>
                                                 <br />
                                             </HorizonWrapper>
                                             <HorizonWrapper2>
