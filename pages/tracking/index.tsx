@@ -87,7 +87,7 @@ export default function Tracking() {
 
  function inputResi(e:string){
         setWarning("");
-        setNoResi(e);
+        setNoResi(e.toUpperCase());
  }
   return (
     <>
