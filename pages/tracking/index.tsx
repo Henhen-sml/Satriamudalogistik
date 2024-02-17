@@ -175,8 +175,10 @@ export default function Tracking() {
                                                   {a.locations ? (
                                                     Object.values(a.locations).map((b:any, c) => (
                                                               <VerticalContent key={c}>
-                                                                  <PText>{formatDateTime(b.dateTime)}</PText>
-                                                                  <p><strong>{b.loct}</strong></p>
+                                                                <PWrapper>
+                                                                    <PText>{formatDateTime(b.dateTime)}</PText>
+                                                                    <p><strong>{b.loct}</strong></p>
+                                                                </PWrapper>
                                                               </VerticalContent>
                                                       ))
                                                   ) : (
@@ -207,6 +209,13 @@ export default function Tracking() {
 
 const PText = styled.p`
 font-size: 15px;
+margin-bottom: -18px;
+margin-top: 15px;
+`
+
+const PWrapper = styled.div` 
+display: flex;
+flex-direction: column;
 `
 
 const waveAnimation = keyframes`
@@ -338,6 +347,18 @@ const VerticalContentWrapper = styled.div`
 
   `;
   
+  const blinkAnimation = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
   const VerticalContent = styled.div`
   padding-left: 12px;
   position: relative;
@@ -347,11 +368,15 @@ const VerticalContentWrapper = styled.div`
     position: absolute;
     top: 50%;
     left: -29px;
-    transform: translateY(-50%);
+    transform: translateY(0%);
     width: 11px;
     height: 11px;
     background-color: #beb6b9;
-    border-radius: 50%; /* Perhatikan bahwa border-radius harus setengah dari lebar atau tinggi titik */
+    border-radius: 50%;
+  }
+  &:last-child::after {
+    background-color: red;
+    animation: ${blinkAnimation} 1s infinite;
   }
 `;
 
