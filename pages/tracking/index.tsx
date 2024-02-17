@@ -167,23 +167,23 @@ export default function Tracking() {
                                                 <br />
                                             </HorizonWrapper>
                                             <VerticalWrapper>
-                                              <Title>History : </Title>
+                                              <Title>History</Title>
                                               <VerticalContentWrapper>
-                                            <HorizonWrapper2>
-                                                Status:<br/><strong>{a.status}</strong>
-                                            </HorizonWrapper2>
-                                              {a.locations ? (
-                                                Object.values(a.locations).map((b:any, c) => (
-                                                          <VerticalContent key={c}>
-                                                              <PText>{formatDateTime(b.dateTime)}</PText>
-                                                              <p><strong>{b.loct}</strong></p>
-                                                          </VerticalContent>
-                                                  ))
-                                              ) : (
-                                                <VerticalContent>
-                                                  <p>Still Process...</p>
-                                                </VerticalContent>
-                                              )}
+                                                <HorizonWrapper2>
+                                                    Status:<br/><strong>{a.status}</strong>
+                                                </HorizonWrapper2>
+                                                  {a.locations ? (
+                                                    Object.values(a.locations).map((b:any, c) => (
+                                                              <VerticalContent key={c}>
+                                                                  <PText>{formatDateTime(b.dateTime)}</PText>
+                                                                  <p><strong>{b.loct}</strong></p>
+                                                              </VerticalContent>
+                                                      ))
+                                                  ) : (
+                                                    <VerticalContent>
+                                                      <p>Still Process...</p>
+                                                    </VerticalContent>
+                                                  )}
                                                 </VerticalContentWrapper>
                                             </VerticalWrapper>
                                         </RichText>
@@ -264,7 +264,7 @@ const Title = styled.h1`
   letter-spacing: -0.03em;
 
   ${media('<=tablet')} {
-    font-size: 4.6rem;
+    font-size: 3.6rem;
     margin-bottom: 2rem;
   }
 `;
@@ -309,10 +309,10 @@ const HorizonWrapper = styled.div`
 
 const VerticalWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 0.5rem;
   font-size: 2rem;
-  padding: 5rem;
+  padding: 2rem;
   border: 2px solid black;
   margin: 5px;
   flex-direction: row;
@@ -325,7 +325,7 @@ const VerticalWrapper = styled.div`
 const VerticalContentWrapper = styled.div`
   position: relative;
   padding: 24px;
-
+  margin-left: 20px;
   &::before {
     content: "";
     position: absolute;
