@@ -47,6 +47,23 @@ export default function Tracking() {
   },[queryString])
 
 
+  function formatDateTime(dateTime: string): string {
+    const date = new Date(dateTime);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+  
+    return `${getDayOfWeek(date)}, ${day} ${month} ${year} ${hour}:${minute}`;
+  }
+  
+  function getDayOfWeek(date: Date): string {
+    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', `Jum'at`, 'Sabtu'];
+    return days[date.getDay()];
+  }
+
+
   function cekNoResi(){
     setSearch(true)
     setTimeout(() => {
@@ -149,9 +166,26 @@ export default function Tracking() {
                                                 <p>Actual Time Arrival:<br/><strong>{a.ATA || "N/A"}</strong></p>
                                                 <br />
                                             </HorizonWrapper>
+                                            <VerticalWrapper>
+                                              <Title>History : </Title>
+                                              <VerticalContentWrapper>
                                             <HorizonWrapper2>
                                                 Status:<br/><strong>{a.status}</strong>
                                             </HorizonWrapper2>
+                                              {a.locations ? (
+                                                Object.values(a.locations).map((b:any, c) => (
+                                                          <VerticalContent key={c}>
+                                                              <PText>{formatDateTime(b.dateTime)}</PText>
+                                                              <p><strong>{b.loct}</strong></p>
+                                                          </VerticalContent>
+                                                  ))
+                                              ) : (
+                                                <VerticalContent>
+                                                  <p>Still Process...</p>
+                                                </VerticalContent>
+                                              )}
+                                                </VerticalContentWrapper>
+                                            </VerticalWrapper>
                                         </RichText>
                                     </ContentContainer>
                                 </BasicSectionWrapper>
@@ -170,6 +204,10 @@ export default function Tracking() {
     </>
   );
 }
+
+const PText = styled.p`
+font-size: 15px;
+`
 
 const waveAnimation = keyframes`
   0% {
@@ -267,6 +305,54 @@ const HorizonWrapper = styled.div`
         text-align: center;
     }
 }
+`;
+
+const VerticalWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  font-size: 2rem;
+  padding: 5rem;
+  border: 2px solid black;
+  margin: 5px;
+  flex-direction: row;
+    p {
+        padding-top: 1rem;
+    }
+}
+`;
+
+const VerticalContentWrapper = styled.div`
+  position: relative;
+  padding: 24px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px; /* Anda tidak perlu mendefinisikan width dua kali */
+    height: 100%;
+    background-color: #beb6b9;
+  }
+
+  `;
+  
+  const VerticalContent = styled.div`
+  padding-left: 12px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -29px;
+    transform: translateY(-50%);
+    width: 11px;
+    height: 11px;
+    background-color: #beb6b9;
+    border-radius: 50%; /* Perhatikan bahwa border-radius harus setengah dari lebar atau tinggi titik */
+  }
 `;
 
 const HorizonWrapper2 = styled.div`
