@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function Hero() {
-  const [noResi, setNoResi] = useState("")
+  const [noResi, setNoResi] = useState("");
   const [BgVid, setBgVid] = useState("");
 
   useEffect(() => {
@@ -20,10 +20,11 @@ export default function Hero() {
     })
   },[])
 
+
   const router = useRouter();
   const handleSearch = () => {
     if(noResi){
-      router.push(`/tracking?query=${noResi}`);
+      router.push(`/tracking?query=SML${noResi}`);
     }else{
       alert('Nomor Resi Tidak Boleh Kosong')
     }
@@ -41,11 +42,13 @@ export default function Hero() {
           <CardInput>
             <InputWrapper>
               <Text2>Track Delivery?</Text2>
+              <WrapperInput><h1>SML - </h1>
                 <InputResi placeholder='Nomor Resi' onChange={(e) => setNoResi(e.target.value)}/><br />
+              </WrapperInput>
                   <Button onClick={(e) => handleSearch()}>Search</Button>
             </InputWrapper>
           </CardInput>
-              <VideoPlayer src={BgVid} autoPlay loop muted />
+            <VideoPlayer src={BgVid} autoPlay loop muted/>
             </VidWrp>
         </VideoWrapper>
   );
@@ -60,6 +63,12 @@ overflow: hidden;
 @media (max-width:1200px){
   height: 40rem;
 }
+`
+const WrapperInput = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+
 `
 
 const CardInput = styled.div`
@@ -108,12 +117,12 @@ const InputResi = styled.input`
   font-weight: 300;
   margin: 0;
   height: 4rem;
-  width: 60%;
+  width: 70%;
   text-align: center;
   line-height: 24px;
   
   @media (max-width: 1200px){
-    width: 40%;
+    width: 50%;
     font-size: 2rem;
     line-height; 24px;
   }
